@@ -1,0 +1,182 @@
+version: "2.0"
+
+intents:
+  - greeting
+  - say_dirty
+  - cara_pesan_hotel
+  - melalui_sendiri
+  - melalui_perusahaan
+  - cek_hotel_kerjasama
+  - cek_budget_hotel
+  - ya
+  - tidak
+  - terima_kasih
+  - rincian_benefit_ramayana
+  - prosedur_asuransi_ramayana
+  - daftar_provider_ramayana
+  - reimburse_biaya_kesehatan
+  - tata_cara_reimburse
+  - rawat_jalan
+  - rawat_inap
+  - batas_waktu_klaim
+  - dokumen_pengajuan
+  - kartu_berobat_hilang
+  - cara_mengubah_faskes
+  - kartu_bpjs_hilang
+  - klaim_kacamata
+  - plafon_kacamata
+  - jangka_waktu_kacamata
+  - tata_cara_kacamata
+  - klaim_autism
+  - ketentuan_telemedicine
+  - dokumen_telemedicine
+  - pendaftaran_kesehatan_keluarga
+  - pendaftaran_kesehatan_pasutri
+  - ketentuan_pendaftaran_kesehatan_pasutri
+  - pendaftaran_kesehatan_anak
+  - ketentuan_pendaftaran_kesehatan_anak
+  - pengumpulan_dokumen_pendaftaran_keluarga
+  - aktivasi_kepesertaan
+
+forms:
+  form_badge:
+    badge:
+      - type: from_text
+
+slots:
+  badge:
+    type: text
+
+responses:
+  utter_cara_pesan:
+  - text: "Terdapat dua cara pemesanan yaitu : \n-pemesanan melalui perusahaan \n-pemesanan sendiri \n\nAnda ingin melakukan pemesanan melalui ? perusahaan atau sendiri "
+
+  utter_ans_cara_perusahaan:
+  - text: "Untuk memesan melalui perusahaan anda harus melakukan pemesanan dengan melihat hotel yang memiliki kerja sama dengan PT Pusri. Apakah anda ingin mengetahui hotel yang bekerja sama dengan pusri ?"
+
+  utter_cek_hotel_perusahaan:
+  - text: "1. Buka web https: atau  atau v2.corporateroomdeal.com. \n2. Login dengan : \n    Corporate ID : pusri \n    Username : pusri1 \n    Password : Pusri2021 \n3. Setelah berhasil login, lalu ketik nama hotel yang dipesan, pilih tanggal check-in dan tanggal check-out. Pilih grade karyawan lalu tekan tombol CARI"
+
+  utter_cara_pesan_perusahaan:
+  - text: "Pastikan bahwa hotel tempat anda menginap telah bekerja sama dengan perusahaan, berikut ini adalah langkah pemesanannya : \n1. Lakukan pemesanan melalui email ke alamat email reservation3@corporateroomdeal.com dan cc ke adminhotel@pusri.co.id. \n2. Berikut ini adalah format email pemesanan hotel : \nKepada : Tim Reservasi CRD. \nUntuk dibantu pesankan hotel dengan rincian sbb : \nNama hotel : \nNama tamu : \nTgl check-in : \nTgl check-out : \nGrade : \nCost center : \n3. Tunggu email konfirmasi pemesanan bukan voucher hotel dari email corporateroomdeal, lalu pastikan detail pemesanan sudah sesuai. \n4. Jika sudah ok, lalu silahkan membalas email tersebut dengan keterangan 'Pemesanan sudah sesuai, agar dapat diterbitkan vouchernya' \n5. Setelah ada konfirmasi ok voucher untuk diterbikan, tim CRD akan mengirimkan voucher hotelnya. \n6. Harap untuk tidak melakukan check in  atau datang ke hotel jika voucher belum terima. \nNo. WA reservasi CRD : 0812 9288 8282" 
+
+  utter_cara_pesan_sendiri:
+  - text: "Tiap karyawan yang melakukan tugas dinas dapat melakukan pemesanan hotel sendiri melalui aplikasi penyedia layanan pemesanan hotel. Namun anda perlu memperhatikan beberapa hal di bawah ini : \n1. Pembayaran diproses pada saat laporan dinas reimburse atau pada saat pengajuan travel request. \n2. Pastikan bahwa biaya pemesanan hotel tidak melebihi biaya maksimum pemesanan hotel oleh perusahaan berdasarkan jabatan anda. \n\nJika anda ingin mengetahui maksimum biaya pemesanan silahkan menuliskan cek budget pemesanan hotel."
+  
+  utter_ask_badge:
+  - text: "Berapa nomor badge anda ?"
+  
+  utter_ask_alasan_pembatalan:
+  - text: "Pembatalan pemesanan hanya didasarkan atas alasan berikut ini: \n-Kegiatan dinas batal \n-Kegiatan dinas selesai lebih cepat \n-Kegiatan dinas diperpanjang \n\n Apakah alasan pembatalan anda ?"
+
+  utter_ans_batal_perusahaan:
+  - text : "1. Pembatalan melalui email ke reservation3@corporateroomdeal.com dan cc ke adminhotel@pusri.co.id. Dengan melampirkan voucher hotelnya \n2.Berikut ini adalah format email pembatalan pemesanan hotel : \nUntuk dibantu pembatalan hotel dengan rincian sbb : \nNama hotel: \nNama Tamu : \nTgl Pemesanan : \nAlasan Pembatalan : \n3. Jika pembatalan berhasil tanpa dikenakan biaya maka tidak perlu membuat surat pembatalan \n4. Jika voucher tidak dibatalkan seluruh atau sebagian maka perlu membuat surat pembatalan ke VP Ketenagekerjaan dengan menjelaskan alasan pembatalan serta cost center pembebanan pembatalan"
+  
+  utter_ans_rechedule:
+  - text: "1. Reschedule melalui email ke reservation3@corporateroomdeal.com dan cc ke adminhotel@pusri.co.id. Dengan melampirkan voucher hotelnya \n2.Berikut ini adalah format email rechedule pemesanan hotel : \nUntuk dibantu rechedule hotel dengan rincian sbb : \nNama hotel: \nNama Tamu : \nTgl Pemesanan Awal : \nTgl Perubahan : \nAsalan Reschedule : \n3. Jika Reschedule berhasil tanpa dikenakan biaya maka tidak perlu membuat surat reschedule \n4. Jika voucher tidak dapat direschedule maka perlu membuat surat pembatalan ke VP Ketenagekerjaan dengan menjelaskan alasan reschedule serta cost center pembebanan reschedule"
+
+  utter_ans_pesanan_sendiri:
+  - text: "1. Silahkan melalukan pembatalan atau reschedule secara mandiri. \n2. Jika terdapat biaya pembatalan atau reschedule maka silahkan membuatkan surat kronologis terkait pembatalan atau reschedule dengan menjelaskan alasan dan cost center pembebananya"
+
+  utter_ans_dinas_cepat:
+  - text: "1. Jika kegiatan dinas lebih cepat selesai voucher tidak bisa dibatalkan, maka dapat dibuatkan surat kronologis pembatalan voucher hotel yang menjelaskan alasan pembatalan serta disebutkan cost center pembebanan voucher hotel yang tidak dapat dibatalkan \n2.Surat tersebut ditujukan ke VP Ketenagakerjaan \n3.Surat tersebut juga harus dilampirkan pada laporan dinas yang dikirim ke Dep. Naker."
+
+  utter_ans_dinas_panjang:
+  - text: "1. Silahkan melakukan pemesanan lanjutan sesuai dengan hari perpanjangannya \n2. Misal kegiatan dari tgl 1 Januari s.d 05 Januari 2021, lalu diperpanjang sampai tanggal 07 Januari 2021 \n3. Maka hotel dapat dipesan dari tanggal 05 - 07 Januari 2021 \n4. Pada laporan dinas harus melampirkan surat keterangan perpanjangan dinas ke Dep. Keternagakerjaan"
+
+  utter_ans_badge:
+  - text: "Badge anda adalah {badge}"
+
+  utter_terima_kasih:
+  - text: "Terima kasih kembali, semoga membantu."
+
+  utter_ans_rincian_benefit_prosedur:
+  - text: "Berikut ini adalah rincian benefit serta prosedur untuk berobat menggunakan asuransi ramayana. anda dapat mendownloadnya disini"
+
+  utter_ans_daftar_provider_asuransi:
+  - text: "Anda dapat mengetahui daftar provider asuransi ramayana dengan mengunduh berkas dibawah ini"
+
+  utter_ans_tata_cara_reimburse_menu:
+  - text: "Mengenai reimburse asuransi kesehatan terdapat dua prosedur bergantung dengan jenis perawatan anda. \nPada saat melakukan pengobatan anda dirawat secara rawat inap atau rawat jalan ?"
+
+  utter_ans_daftar_biaya_direimburse:
+  - text: "1. Jika peserta berobat di luar provider Ramayana tetapi tetap mengikuti prosedur berobat Asuransi Ramayana. Jika tidak sesuai prosedur, tidak dapat direimburse \ncontoh : Misal,karyawan langsung berobat ke dokter spesialis penyakit dalam tanpa ada rujukan dari dokter umum terlebih dahulu, maka biaya tidak dapat direimburse ke Ramayana. \n2. Jika ada obat atau pemeriksaan penunjang yang masuk dalam tanggungan Asuransi Ramayana tapi tidak tersedia di provider Asuransi Ramayana, peserta dapat mengajukan klaim reimburse penggantian ke Asuransi Ramayana. \ncontoh : Misal, vaksinasi anak masuk dalam tanggungan asuransi Ramayana, tapi ketika vaksinasi dilakukan di RS Bunda Palembang, RS tersebut tidak menyediakan vaksinasi untuk provider Ramayana, maka dapat di klaim reimburse \n3. Jika peserta rawat inap atau melahirkan dengan jaminan BPJS Kesehatan atau asuransi lain,dapat mengajukan reimburse selisih biaya atau hospital cash plan ke Asuransi Ramayana (silahkan baca kembali Rincian Benefit Prosedur Berobat Asuransi Ramayana) \n4. Di luar rincian benefit yang ditanggung Asuransi Ramayana, tidak dapat direimburse."
+
+  utter_ans_tata_cara_rawat_jalan:
+  - text: "Berikut ini adalah tata cara reimburse asuransi ramayana secara rawat jalan : \n \n 1. Form atau lembar keterangan diagnosis dokter atas penyakit dan rekomendasi terapi atau pemeriksaan penunjang atau tindakan yg dilakukan. Form atau lembar diagnosis ini harus ditandatangani oleh dokter yg merawat. Form diaganosis dapat menggunakan form dari Ramayana. Anda dapat mendownloadnya dibawah ini \n2. Surat rujukan dari dokter umum jika berobat kedokter spesialis , kecuali  5 dokter spesialis Mata, THT, Obgyn, Anak, Gigi Spesialis tidak perlu surat rujukan. \n3. Kwitansi biaya dokter, jika berobat diluar provider Asuransi Ramayana.\n4. Kwitansi biaya pemeriksaan penunjang lab, rontgen, dll dan copyhasil dari pemeriksaan penunjang, jika dilakukan diluar provider Asuransi Ramayana. \n5. Copy resep dan Kwitansi pembelian obat jika ada biaya obat yang akan di-reimburse \n6. Copy kartu Asuransi Ramayana \n7. Keterangan badge, nomor rekening, nomor Handphone dan email karyawan. \n \n Perlu diketahui bahwa masa berlaku klaim reimbursement adalah 90 (Sembilan puluh) hari kalender sejak tanggal Kwitansi. Dokumen reimbursement dapat dikumpulkan ke loket Departemen Ketenagakerjaan dan Hubungan Industrial Atau dikirimkan ke PT. Asuransi Ramayana, Tbk (Unit Askes Ramayana, Jl. Kebon Sirih No. 49, Jakarta 10340). \n\nPusri tidak bertanggung jawab atas tidak dibayarnya klaim reimbursement oleh Asuransi Ramayana akibat benefit yang tidak masuk dalam cakupan perjanjian dan polis, atau pengobatan yang tidak sesuai prosedur asuransi, atau akibat kekurangan dokumen klaim, atau klaim yang sudah melebihi masa berlaku klaim reimburse."
+
+  utter_ans_tata_cara_rawat_inap:
+  - text: "Berikut ini adalah tata cara reimburse asuransi ramayana secara rawat inap : \n \nDokumen pendukung klaim reimbursement untuk rawat inap, hospital cash plan, dan jenis rincian reimbursement lainnya dapat di-download dibawah ini.\nSilahkan download atau dapat menggunakan form yang tersedia di RS atau praktek dokter. \n \nPerlu diketahui bahwa masa berlaku klaim reimbursement adalah 90 (Sembilan puluh) hari kalender sejak tanggal Kwitansi. Dokumen reimbursement dapat dikumpulkan ke loket Departemen Ketenagakerjaan dan Hubungan Industrial Atau dikirimkan ke PT. Asuransi Ramayana, Tbk (Unit Askes Ramayana, Jl. Kebon Sirih No. 49, Jakarta 10340). \n\nPusri tidak bertanggung jawab atas tidak dibayarnya klaim reimbursement oleh Asuransi Ramayana akibat benefit yang tidak masuk dalam cakupan perjanjian dan polis, atau pengobatan yang tidak sesuai prosedur asuransi, atau akibat kekurangan dokumen klaim, atau klaim yang sudah melebihi masa berlaku klaim reimburse."
+
+  utter_ans_batas_waktu_klaim:
+  - text: "Masa berlaku klaim reimbursement adalah 90 hari kalender sejak tanggal Kwitansi."
+
+  utter_ans_penyerahan_dokumen:
+  - text : "Dokumen reimbursement sesuai dengan prosedur yang telah ditetapkan. Dokumen reimbursement dapat dikumpulkan keloket Departemen Ketenagakerjaan dan Hubungan Industrial Atau dikirimkan ke PT. Asuransi Ramayana, TbkUnit Askes Ramayana, Jl. KebonSirih No. 49, Jakarta 10340"
+
+  utter_ans_kartu_berobat_hilang:
+  - text : "Jika kartu Asuransi Kesehatan hilang, peserta agar melapor ke Departemen Ketenagakerjaan dan Hubungan Industrial dengan membawa surat keterangan hilang darikepolisian dan selanjutnya akan diurus oleh SDM pencetakan kartu baru ke Asuransi. \n\nPusri tidak bertanggung jawab atas tidak dibayarnya klaim reimbursement oleh Asuransi Ramayana akibat benefit yang tidak masuk dalam cakupan perjanjian dan polis, atau pengobatan yang tidak sesuai prosedur asuransi, atau akibat kekurangan dokumen klaim, atau klaim yang sudah melebihi masa berlaku klaim reimburse."
+
+  utter_ans_ganti_faskes:
+  - text : "Download aplikasi JKN Mobile dan daftar sesuai dengan data kepesertaan Anda di BPJS Kesehatan. Peserta dapat mengubah Faskes 1 yang diinginkan melalui aplikasi tersebut."
+
+  utter_ans_bpjs_hilang:
+  - text: "Jika kartu BPJS Kesehatan hilang, peserta dapat mencetak sendiri e-card melalui aplikasi JKN Mobile atau dapat meminta untuk dicetak ulang oleh Departemen Ketenagakerjaan dan Hubungan Industrial dengan membawa surat keterangan kehilangan kartu BPJS Kesehatan dari kepolisian."
+
+  utter_ans_plafon_kacamata:
+  - text: "Biaya penggantian kacamata maksimal sebesar Rp. 500.000,- Frame Rp. 200.000,- Lensa Rp. 300.000,-"
+
+  utter_ans_tata_cara:
+  - text: "Untuk pekerja diberikan 2 tahun sekali dan untuk keluarga pekerja diberikan 3 tahun sekali dari pengajuan klaim sebelumnya sesuai data klaim di sistem ESS"
+
+  utter_ans_klaim_autism:
+  - text: "Anda mendowload berkas persyaratan dan ketentuan untuk klaim autisme dibawah ini"
+
+  utter_ans_ketentuan_telemedicine:
+  - text: "1. Metode klaim adalah dengan cara reimbursement dengan biaya pengobatan telemedicine maksimal Rp. 1.000.000 (Satu Juta Rupiah. \n2. Hanya bisa untuk pengobatan di Rumah Sakit yang menyelenggarakan telemedicine. \n3. Prosedur pengobatan adalah berjenjang (melalui dokter umum terlebih dahulu, kecuali 5 dokter spesialis tanpa rujukan : Anak, Mata, THT, Obgyn dan Gigi Spesialis). \n4. Jika pengobatan langsung ke dokter spesialis, maka biaya dokter akan diganti sesuai dengan biaya dokter umum."
+
+  utter_ans_dokumen_telemedicine:
+  - text: "1. Bukti SMS/WA pendaftaran (registrasi) ke Rumah Sakit yang resmi menyelenggarakan layanan berbasis digital. \n2. Bukti SMS/WA Konsultasi dan pemberian resep oleh dokter dan tercantum Nomor Medical Record (nomor pendaftaran) Peserta. \n3. Copy kartu Peserta \n4. Keterangan badge, nomor rekening, nomor HP dan email karyawan \n5. Dokumen reimbursement dapat dikumpulkan ke loket Departemen Ketenagakerjaan dan Hubungan Industrial atau dikirimkan ke PT. Asuransi Ramayana, Tbk(Unit Askes Ramayana, Jl. Kebon Sirih No. 49, Jakarta 10340."
+  
+  utter_ans_pendaftaran_pasutri:
+  - text: "1. Dokumen asli (hard copy) pendukung pendaftaran agar dikirimkan ke Departemen Ketenagakerjaan. \n2. Data istri/suami/anak yang dimasukkanke ESS akan di-approve setelah dokumen asli (hard copy)pendaftaran pernikahan diterima oleh SDM"
+
+  utter_ans_pendaftaran_anak:
+  - text: "Daftar anak yang baru lahir melalui ESS (Employee Self Service – Life Events – Anggota Keluarga) dan attach Surat Keterangan Lahir di ESS."
+
+  utter_ans_ketentuan_pasutri:
+  - text: "1. Jika istri/suami sudah terdaftar sebagai peserta BPJS Kesehatan Badan Usaha lain (di tempat suami/istri bekerja),Mohon agar dapat menyertakan informasi tersebut saat mengumpulkan KK dan menyampaikan copy kartu BPJS Kesehatan istri/suami. \n2. Jika istri/suami sudah terdaftar di BPJS Kesehatan sebagai peserta mandiri agar dapat dialihkan menjadi tanggungan Pusri,Maka terlebih dahulu harus membayar lunas iuran BPJS Kesehatannya. Copy kartu BPJS Kesehatan dan Bukti pelunasaniuran BPJS Kesehatan agar disertakan saat mengumpulkan KK. \n3. Jika istri/suami berhenti dari tempat kerjanya agar dapat dialihkan menjadi tanggungan Pusri,Mengumpulkan KK Gabung, Copy BPJS Istri/suami dan Surat Keterangan Berhenti Kerja ke Bag. PRK dan PascaKerja atau dapat melalui email sekdepnaker@pusri.co.id. Beri keterangan data badge, nama karyawan, alamat email dan nomor handphone karyawan saat mengumpulkan dokumen."
+
+  utter_ans_ketentuan_anak:
+  - text: "Anak dengan usia< 30 hari jika mau berobat/ imunisasi dan belum mendapatkan kartu Ramayana, maka dapat menggunakan kartu ibunya. Jika berumur> 30 hari agar mengkonfirmasi ke PIC Ramayana setiap kali akan berobat/imunisasi untuk dibuka kan akses ke Rumah Sakit secara manual."
+  
+  utter_ans_dokumen_pendaftaran:
+  - text: "1. Dokumen asli (hard copy) pendukung pendaftaran agar dikirimkan ke Departemen Ketenagakerjaan. \n2. Data istri/suami/anak yang dimasukkanke ESS akan di-approve setelah dokumen asli (hard copy)pendaftaran pernikahan diterima oleh SDM"
+  
+  utter_ans_aktivasi_kepesertaan:
+  - text: "1. Aktivasi kepesertaan istri/suami/anak di Asuransi adalah 1 hari kerja sejak data di ESS di-approve oleh SDM. Download atau refresh aplikasi askes Ramayana untuk memastikan bahwa istri/suami sudah terdaftar di Ramayana. \n2. Setelah diaktivasi,walaupun belum mendapat kartu asuransi, istri/suami/anak sudah dapat mengakses benefit asuransi kesehatan dengan terlebih dahulu menghubungi PIC Ramayana (PIC Ramayana: 081290373429) jika ingin berobat. \n3. Secara paralel, mohon untuk mengurus penambahan data di Kartu Keluarga (KK) dan mengumpulkan copy KK ke Bag. PRK &Pasca Kerja atau dapat dikirim ke email sekdepnaker@pusri.co.id untuk didaftarkan ke BPJS Kesehatan. Beri keterangan data badge, nama karyawan, alamat email dan nomor handphone karyawan saat mengumpulkan KK. \n4. Pastikan KK sudah online di Dukcapil. Apabila belum online, maka anak tidak bias didaftarkan ke BPJS Kesehatan. \n5. Apabila dalam 3 bulan peserta belum mengumpulkan KK, SDM berhak untuk menonaktifkan kepesertaan anak di Asuransi Kesehatan. \n6. Untuk anak ke 4 dst tetap didaftar ke ESS, tetapi tidak mendapatkan tanggungan kepesertaan di BPJS Kesehatan dan Asuransi Kesehatan."
+  
+  utter_res_tidak_mengerti:
+  - text: "Maaf kami tidak mengerti apa maksud anda."
+
+  utter_greeting:
+  - text: "Hai, apakah ada yang bisa saya bantu ? \n \nKami bisa menjawab pertanyaan mengenai : \n1. Pemesanan hotel dinas \n2. Asuransi ramayana \n3. Ketentuan Telemedicine \n4. Pendaftaran askes anggota keluarga \n5. Kartu BPJS Hilang"
+  
+  utter_menu_layanan_kesehatan:
+  - text: "Pertanyaan terkait layanan kesehatan : \n1. Mengenai asuransi kesehatan \n2. Mengenai klaim kacamata \n3. Mengenai pendaftaran anggota keluarga \n4. Bagaimana mengubah fasilitas kesehatan BPJS \n5. Bagaimana mengurus kartu BPJS hilang \n6. Bagaimana mengurus kartu berobat hilang \n6. Ketentuan atau dokumen telemedicine"
+
+  utter_menu_hotel_dinas:
+  - text: "Pertanyaan terkait hotel dinas : \n1. Bagaimana cara pesan hotel dinas \n2. Cek budget hotel dinas \n3. Bagaimana cara reschedule pesanan \n4. Bagaimana cara pembatalan pesanan"
+
+  utter_menu_asuransi_ramayana:
+  - text: "Pertanyaan terkait asuransi kesehatan / asuransi ramayana : \n1. Apa saja manfaat menggunakan asuransi ramayana  \n2. Cek provider asuransi kesehatan ramayana \n3. Berapa biaya penggantian asuransi ramayana \n4. Bagaimana prosedur klaim reimbursement karyawan \n5. Berapa lama batas waktu klaim asuransi \n6. Cek dokumen pengajuan asuransi kesehatan ramayana \n7. Kartu berobat ramayana hilang"
+
+  utter_menu_pendaftaran_keluarga:
+  - text: "Pertanyaan terkait pendaftaran keluarga : \n1. Bagaimana cara mendaftarkan suami / istri pada layanan kesehatan \n2. Ketentuan pendaftaran suami / istri \n3. Bagaimana cara mendaftarkan anak pada layanan kesehatan \n4. Ketentuan pendaftaran anak \n5. Bagaimana pengumpulan dokumen "
+
+  utter_menu_reimburse_kacamata:
+  - text: "Pertanyaan terkait reimburse kacamata : \n1. Plafon kacamata / limit biaya kacamata \n2. Berapa jangka waktu untuk klaim kacamata \n3. Bagaimana tata cara reimburse kacamata"
+  
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

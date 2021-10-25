@@ -1,0 +1,8 @@
+*.pyc
+/virtualenv
+/rasa/models
+dokumentasi_bot.txt
+*.out
+/venv
+/rasa_x_env
+performance.txt

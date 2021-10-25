@@ -1,0 +1,52 @@
+# h5+1 h
+apa
+kapan
+dimana
+kenapa
+mengapa
+bagaimana
+siapa
+berapa
+
+# penanda kepemilikan
+saya
+kami
+kita
+aku
+mereka
+ia
+dia
+
+# pendanda bantuan
+tolong
+mohon
+bantu
+harap
+minta
+
+
+# kata kondisi
+masih
+secara
+sedang
+lagi
+juga
+saja
+agak
+terus
+melalui
+
+# kata tambahan
+cara
+itu
+menggunakan
+kah
+ini
+hal
+harus
+yang
+ada
+untuk
+dari
+oleh
+dapat

@@ -1,0 +1,175 @@
+.main-layout{
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	z-index: 0;
+	position: relative;
+}
+p{
+	margin:0px !important
+}
+#buttonz{
+	background: url('static/sendmessage.svg');width: 20px;height: 20px;background-size: 100% 100%;border: none;cursor: pointer;
+}
+#image-big{
+	width: 55px; height: 55px;display: inline-block; margin-right: 10px;box-shadow: 0 0 7px 0 rgb(0 0 0 / 15%);padding: 3px; border-radius: 100%;overflow: hidden;
+}
+#font-big{
+	display: inline-block; margin-left: 8px;position: absolute;margin-top: 5px;font-size: 21px;font-weight:500
+}
+#online{
+	display: block;font-size: 15px;font-weight: 400;margin-top: 4px;color: rgb(155, 166, 179)
+}
+#header-bot{
+	padding: 15px 18px;
+	background-color: white; 
+	display: inline-block;
+	float: left;
+	margin-top: 5px;
+	position: relative;
+	z-index: -1;
+	right: -200px;
+	border-radius: 40px;
+	box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 1px 2px rgb(0 0 0 / 23%);
+	font-weight: 400;
+	border: none;
+	font-size: 14px;
+	cursor: pointer;
+}
+#button-bot{
+	background: url('static/logobot.png');
+	background-size: 100% 100%;
+	cursor: pointer;
+	height: 58px;
+	width: 58px;
+	float: right;
+	display: inline-block;
+}
+.box-layout{
+	position: fixed;
+	display: inline-block;
+	z-index: 99;
+	cursor: pointer;
+	bottom: 20px;
+	right: 20px;
+}
+.wrapper{
+	width: 183px;
+	position: relative;
+	z-index: -1;
+	display: inline-block;
+	overflow: hidden;
+	right: -30px;
+}
+.box-layout:hover #header-bot{
+	transition: .75s;
+    right: 0px;
+}
+
+.menu-bot{
+	height: 80vh;
+	background-color: white;
+	width: 370px;
+	position: fixed;
+	right: 30px;
+	bottom: 100px;
+	z-index: 100;
+	border-radius: 20px;
+	padding-top:5px;
+	top: 40px
+
+}
+.header-menu{
+	background-color: white;
+	border-radius: 20px
+}
+.main-menu{
+	background-color: rgb(234, 238, 243);
+	height:80%;
+	box-shadow: inset 0 0 23px 0 rgb(0 0 0 / 16%);
+	padding: 10px 20px;
+}
+.bot-small{
+	width: 20px;height: 20px;padding: 5px; border-radius: 100%;
+	background-color: white;
+	box-shadow: 0 3px 6px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 10%);
+}
+.bot-chat{
+	display: flex;
+	padding: 5px
+}
+.chatbox{
+	margin-left: 10px;
+	line-height: 1.6;
+	font-size: 13px
+}
+.messagebox{
+	background-color: white;
+	padding: 15px;
+	border-radius: 10px;
+	border-top-left-radius: 0px
+}
+.button-option{
+	padding: 7px 14px;
+	border-radius: 16px;
+	border: solid 1px rgb(0, 108, 255);
+	background-color: white;
+	font-size: 11px;
+	font-weight: 600;
+	color: rgb(0, 108, 255);
+	margin: 6px;
+	cursor:pointer;
+}
+.footer-menu{
+	background-color: white;
+	padding: 12px 20px;
+	order: 2;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+
+}
+#input-form{
+	display: flex;
+}
+.button-box{
+	margin-left: auto;
+
+}
+#inputbox{
+	min-width: 250px
+}
+#inputbox:focus{
+	outline: none
+}
+#inputbox::placeholder{
+	font-size: 13px;
+	font-weight: 400;
+	color:rgb(155, 166, 179);
+	letter-spacing: 1.2px;
+}
+.menu-bot{
+	display: none;
+	opacity: 0;
+	transform: translateY(100%);
+}
+.user-chat{
+	display: flex;
+	padding: 5px;
+	margin-top: 8px;
+	margin-left: auto;
+}
+.user-chat .avatar{
+	float: right
+}
+.user-chat .chatbox .messagebox{
+	float: right;
+	margin-left: auto;
+	height: auto;
+	margin-right: 10px;
+	border-radius:13px;
+	border-top-right-radius: 0px;
+	word-wrap:break-word;
+}
+.main-menu{
+	overflow-y: auto;
+}

@@ -1,0 +1,27 @@
+version: "2.0"
+
+rules:
+
+- rule: Activate form badge
+  steps:
+  - intent: cek_budget_hotel
+  - action: form_badge
+  - active_loop: form_badge
+
+- rule : Submit form badge
+  steps:
+  - action: form_badge
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_ans_badge
+
+- rule: Terima kasih
+  steps:
+  - intent: terima_kasih
+  - action: utter_terima_kasih
+
+- rule: Tidak mengerti
+  steps:
+  - intent: nlu_fallback
+  - action: utter_res_tidak_mengerti

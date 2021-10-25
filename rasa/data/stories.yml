@@ -1,0 +1,161 @@
+version: "2.0"
+
+stories:
+
+- story: greeting
+  steps:
+  - intent: greeting
+  - action: utter_greeting
+
+- story: greeting tidak
+  steps:
+  - intent: greeting
+  - action: utter_greeting
+  - intent: tidak
+  - action: utter_terima_kasih
+
+
+- story: hotel path 1
+  steps:
+  - intent: cara_pesan_hotel
+  - action: utter_cara_pesan
+  - intent: melalui_sendiri
+  - action: utter_cara_pesan_sendiri
+
+- story: hotel path 2
+  steps:
+  - intent: cara_pesan_hotel
+  - action: utter_cara_pesan
+  - intent: melalui_perusahaan
+  - action: utter_ans_cara_perusahaan
+  - intent: ya
+  - action: utter_cek_hotel_perusahaan
+  - action: utter_cara_pesan_perusahaan
+
+- story: hotel path 3
+  steps:
+  - intent: cara_pesan_hotel
+  - action: utter_cara_pesan
+  - intent: melalui_perusahaan
+  - action: utter_ans_cara_perusahaan
+  - intent: tidak
+  - action: utter_cara_pesan_perusahaan
+
+- story: cek hotel perusahaan
+  steps:
+  - intent: cek_hotel_kerjasama
+  - action: utter_cek_hotel_perusahaan
+
+- story: rincian benefit
+  steps:
+  - intent: rincian_benefit_ramayana
+  - action: utter_ans_rincian_benefit_prosedur
+
+- story: rincian prosedur
+  steps:
+  - intent: prosedur_asuransi_ramayana
+  - action: utter_ans_rincian_benefit_prosedur
+
+- story: daftar provider asuransi
+  steps:
+  - intent: daftar_provider_ramayana
+  - action: utter_ans_daftar_provider_asuransi
+
+- story: biaya yang direimburse
+  steps:
+  - intent: reimburse_biaya_kesehatan
+  - action: utter_ans_daftar_biaya_direimburse
+
+- story: tata cara reimburse asuransi path 1
+  steps:
+  - intent: tata_cara_reimburse
+  - action: utter_ans_tata_cara_reimburse_menu
+  - intent: rawat_jalan
+  - action: utter_ans_tata_cara_rawat_jalan
+
+- story: tata cara reimburse asuransi path 2
+  steps:
+  - intent: tata_cara_reimburse
+  - action: utter_ans_tata_cara_reimburse_menu
+  - intent: rawat_inap
+  - action: utter_ans_tata_cara_rawat_inap
+
+- story: batas waktu reimburse asuransi
+  steps:
+  - intent: batas_waktu_klaim
+  - action: utter_ans_batas_waktu_klaim
+
+- story: dokumen pengajuan asuransi
+  steps:
+  - intent: dokumen_pengajuan
+  - action: utter_ans_penyerahan_dokumen
+
+- story: kartu berobat hilang
+  steps:
+  - intent: kartu_berobat_hilang
+  - action: utter_ans_kartu_berobat_hilang
+
+- story: cara mengubah faskes
+  steps:
+  - intent: cara_mengubah_faskes
+  - action: utter_ans_ganti_faskes
+
+- story: kartu bpjs hilang
+  steps:
+  - intent: kartu_bpjs_hilang 
+  - action: utter_ans_bpjs_hilang
+
+- story: plafon kacamata
+  steps:
+  - intent: plafon_kacamata
+  - action: utter_ans_plafon_kacamata
+
+- story: jangka waktu klaim kacamata
+  steps:
+  - intent: jangka_waktu_kacamata
+  - action: utter_ans_tata_cara
+
+- story: tata cara klaim kacamata
+  steps:
+  - intent: tata_cara_kacamata
+  - action: utter_ans_tata_cara
+
+- story: klaim autism
+  steps:
+  - intent: klaim_autism
+  - action: utter_ans_klaim_autism
+
+- story: ketentuan telemedicine
+  steps:
+  - intent: ketentuan_telemedicine
+  - action: utter_ans_ketentuan_telemedicine
+
+- story: dokumen telemedicine
+  steps:
+  - intent: dokumen_telemedicine
+  - action: utter_ans_dokumen_telemedicine
+
+- story: pendaftaran kesehatan pasutri
+  steps:
+  - intent: pendaftaran_kesehatan_pasutri
+  - action: utter_ans_pendaftaran_pasutri
+
+- story: ketentuan pendaftaran pasutri
+  steps:
+  - intent: ketentuan_pendaftaran_kesehatan_pasutri
+  - action: utter_ans_ketentuan_pasutri
+
+- story: pendaftaran kesehatan anak
+  steps:
+  - intent: ketentuan_pendaftaran_kesehatan_anak 
+  - action: utter_ans_ketentuan_anak
+
+- story: dokumen pendaftaran keluarga
+  steps:
+  - intent: pengumpulan_dokumen_pendaftaran_keluarga
+  - action: utter_ans_dokumen_pendaftaran
+
+- story: aktivasi kepesertaan
+  steps:
+  - intent: aktivasi_kepesertaan
+  - action: utter_ans_aktivasi_kepesertaan

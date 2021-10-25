@@ -1,0 +1,345 @@
+version: "2.0"
+
+nlu:
+- intent: greeting
+  examples: |
+    - selamat pagi
+    - selamat siang
+    - hai
+    - hii
+    - halo
+    - halo admin
+    - hai admin
+    - hai bot
+    - saya bertanya
+    - assalamualaikum
+    - ass
+    - asslmulaikum
+
+- intent: cara_pesan_hotel
+  examples: |
+    - pesan hotel
+    - reservasi hotel
+    - booking hotel
+    - pemesanan hotel
+    - pesan hotel dinas
+    - pemesanan hotel dinas
+    - booking hotel dinas
+    - pesan penginapan dinas
+    - reservasi penginapan dinas
+    - booking penginapan dinas
+
+- intent: melalui_sendiri
+  examples: |
+    - pesan hotel sendiri
+    - pemesanan hotel sendiri
+    - booking hotel sendiri
+    - pesan hotel dinas mandiri
+    - pemesanan hotel dinas mandiri
+    - booking hotel dinas mandiri
+    - pesan mandiri
+    - booking mandiri
+    - pesan sendiri
+    - reservasi sendiri
+
+- intent: melalui_perusahaan
+  examples: |
+    - pesan hotel perusahaan
+    - pemesahanan hotel perusahaan
+    - booking hotel perusahaan
+    - pesan hotel dinas perusahaan
+    - pemesanan hotel dinas perusahaan
+    - booking hotel dinas perusahaan 
+    - pesan hotel kantor
+    - booking hotel kantor
+    - pesan hotel pusri
+    - booking hotel pusri
+
+- intent: cek_hotel_kerjasama
+  examples: |
+    - cek hotel bekerja sama pusri
+    - cek hotel dinas pusri
+    - cek hotel kerja sama 
+    - daftar hotel kerja sama 
+    - daftar hotel dinas
+
+- intent: cek_budget_hotel
+  examples: |
+    - cek budget hotel 
+    - cek biaya pemesanan hotel
+    - biaya pemesanan hotel
+    - cek harga hotel ditanggung perusahaan
+    - biaya pemesanan ditanggung 
+    - total biaya ditanggung
+    - budget pemesanan hotel
+
+
+- intent: ya
+  examples: |
+    - iya
+    - benar
+    - betul
+    - baik
+    - yaps
+    - y
+    - iy
+    - iyah
+    - iyaaaa
+
+- intent: tidak
+  examples: |
+    - tidak
+    - engga
+    - no
+    - tdk
+    - td
+    - tida
+    - enggak
+
+- intent: terima_kasih
+  examples: |
+    - oke
+    - terima kasih
+    - terima kasih ya
+    - terima kasih banyak
+    - makasih
+    - thanks
+    - thx
+    - tks
+
+- intent: rincian_benefit_ramayana
+  examples : |
+    - keuntungan asuransi ramayana 
+    - profit asuransi ramayana
+    - manfaat asuransi ramayana
+    - rincian benefit asuransi ramayana
+    - didapatkan dengan asuransi ramayana
+    - manfaat diberikan asuransi ramayana
+
+- intent: prosedur_asuransi_ramayana 
+  examples : |
+    - prosedur asuransi ramayana
+    - prosedur memakai asuransi ramayana
+    - proses asuransi ramayana
+    - rincian prosedur asuransi ramayana
+    - tata cara asuransi ramayana
+
+- intent: daftar_provider_ramayana
+  examples : |
+    - daftar provider asuransi ramayana
+    - daftar provider askes ramayana
+    - cek provider askes ramayana
+    - tempat layanan kesehatan asuransi ramayana
+    - rumah sakit layanan asuransi ramayana
+    - rumah sakit askes ramayana
+
+- intent: reimburse_biaya_kesehatan 
+  examples : |
+    - biaya pencairan asuransi ramayana
+    - biaya pencairan asuransi
+    - biaya penggantian askes ramayana
+    - reimburse asuransi kesehatan ramayana
+    - reimbursement askes ramayana
+    - mengajukan klaim penggantian biaya
+    - mengajukan klaim reimbursement
+    - klaim biaya asuransi ramayana
+    - klaim biaya askes ramayana
+
+- intent: tata_cara_reimburse
+  examples : |
+    - tata reimburse asuransi ramayana
+    - tata mengajukan reimburse asuransi ramayana
+    - reimburse asuransi ramayana
+    - reimburse asuransi kesehatan
+    - tata klaim asuransi kesehatan
+    - prosedur klaim asuransi ramayana
+    
+- intent: rawat_jalan
+  examples : |
+    - rawat jalan
+    - rawat jln
+    - rwt jln
+    - rwt jlan
+
+- intent: rawat_inap
+  examples : |
+    - rawat inap
+    - rwt inap
+    - rwat inap
+    - rawat inep
+    - opname
+    - opnam
+
+- intent: batas_waktu_klaim 
+  examples : |
+    - lama batas waktu klaim asuransi ramayana
+    - lama batas waktu klaim askes ramayana
+    - lama batas klaim asuransi
+    - batas waktu klaim asuransi ramayana
+    - batas waktu pengajuan klaim asuransi
+    - lama batas waktu pengajuan klaim asuransi
+
+- intent: dokumen_pengajuan
+  examples : |
+    - dokumen pendukung reimbuse ke asuransi ramayana
+    - dokumen pendukung klaim asuransi ramayana
+    - dokumen pendukung pengajuan asuransi ramayana
+    - dokumen mengajukan klaim asuransi kesehatan
+    - dokumen pendukung pengajuan asuransi kesehatan
+
+- intent: kartu_berobat_hilang 
+  examples : |
+    - mengurus kartu berobat hilang
+    - kartu berobas askes hilang
+    - kartu ramayana hilang
+    - mengurus kartu ramayana hilang
+    - kartu asuransi ramayana hilang
+    - kartu askes ramayana hilang
+    - kartu berobat hilang
+
+- intent: cara_mengubah_faskes 
+  examples : |
+    - mengubah fasilitas kesehatan pada bpjs
+    - mengubah faskes pada bpjs
+    - mengganti faskes pada bpjs
+    - mengganti fasilitas kesehatan bpjs
+    - ganti fasilitas kesehatan bpjs
+    - ganti fakses bpjs
+
+- intent: kartu_bpjs_hilang 
+  examples : |
+    - mengurus kartu bpjs hilang
+    - kartu bpjs hilang
+    - mengurus kartu bpjs hilang
+    - kartu bpjs rusak
+    - mengurus kartu bpjs rusak
+
+
+- intent: klaim_kacamata 
+  examples : |
+    - langkah klaim kacamata dengan asuransi ramayana
+    - langkah klaim kacamata
+    - klaim kacamata asuransi ramayana
+    - tata klaim kacamata asuransi ramayana
+    - prosedur klaim kacamata asuransi ramayana
+    - klaim penggantian biaya kacamata
+    - klaim biaya penggantian kacamata
+    - klaim kacamata
+
+- intent: plafon_kacamata
+  examples: |
+    - plafon kacamata
+    - plafon klaim kacamata
+    - plafon kacamata asuransi ramayana
+    - limit pertanggungan kacamata
+    - biaya ditanggung kacamata
+    - limit biaya kacamata
+
+- intent: jangka_waktu_kacamata
+  examples: |
+    - jangka waktu klaim kacamata
+    - jangka waktu klaim kacamata askes ramayana
+    - jangka waktu mendapatkan kacamata
+    - jangka waktu mengajukan reimburse kacamata 
+    - jangka waktu klaim kacamata
+
+- intent: tata_cara_kacamata
+  examples: |
+    - klaim kacamata
+    - panduan klaim kacamata
+    - ketentuan klaim kacamata
+    - proses klaim kacamata
+    - tata klaim kacamata
+    - tata reimburse kacamata
+    - proses reimburse kacamata
+
+- intent: klaim_auitsm
+  examples: |
+    - klaim asuransi anak berkebutuhan khusus
+    - klaim asuransi anak autis
+    - klaim asuransi anak autisme
+    - asuransi anak autisme
+    - asuransi anak berkebutuhan khusus
+
+- intent: ketentuan_telemedicine
+  examples: |
+    - ketentuan telemedicine
+    - prosedur menggunakan telemedicine
+    - ketentuan mengajukan telemedicine
+    - menggunakan telemedicine
+    - tata menggunakan telemedicine
+
+- intent: dokumen_telemedicine 
+  examples: |
+    - dokumen syarat telemedicine
+    - dokumen dibutuhkan telemedicine
+    - dokumen dibutuhkan menggunakan telemedicine
+    - dokumen pengajuan telemedicine
+
+- intent: pendaftaran_kesehatan_keluarga
+  examples: |
+    - mendaftarkan anggota keluarga pada layanan kesehatan
+    - mendaftar anggota keluarga pada fasilitas kesehatan
+    - pendaftaran keluarga pada layanan kesehatan
+    - pendaftaran keluarga faskes
+    - proses pendaftaran keluarga pada fasilitas kesehatan
+    - proses mendaftarkan anggota keluarga pada faskes
+
+- intent: pendaftaran_kesehatan_pasutri
+  examples: |
+    - mendaftarkan suami pada layanan kesehatan
+    - mendaftarkan suami pada faskes 
+    - mendaftarkan istri pada layanan kesehatan
+    - mendaftarkan istri pada faskes 
+    - pendaftaran pasutri pada layanan kesehatan
+    - pendaftaran keluarga pada layanan kesehatan
+    - pendaftaran anggota keluarga pada faskes
+
+- intent: ketentuan_pendaftaran_kesehatan_pasutri
+  examples: |
+    - ketentuan pendaftaran fakses suami
+    - ketentuan pendaftaran layanan kesehatan suami
+    - ketentuan pendafataran layanan kesehatan keluarga
+    - syarat pendaftaran keluarga pada layanan kesehatan
+    - prosedur pendaftaran keluarga pada layanan kesehatan
+    - ketentuan pendaftaran faskes istri
+    - ketentuan pendaftaran layanan kesehatan istri
+
+- intent: ketentuan_pendaftaran_kesehatan_anak
+  examples: |
+    - ketentuan pendaftaran fakses anak
+    - ketentuan pendaftaran layanan kesehatan anak
+    - ketentuan pendafataran layanan kesehatan anak
+    - syarat pendaftaran anak pada layanan kesehatan
+    - prosedur pendaftaran anak pada layanan kesehatan
+    - ketentuan pendaftaran faskes anak
+    - ketentuan pendaftaran layanan kesehatan anak
+
+- intent: pengumpulan_dokumen_pendaftaran
+  examples: |
+    - proses pengumpulan dokumen pendaftaran
+    - pengumpulan dokumen pendaftaran
+    - dokumen pendaftaran dikumpulkan
+    - mengenai dokumen pendaftaran anggota keluarga
+    - dokumen pendaftaran anggota keluarga
+
+- intent: aktivasi_kepesertaan
+  examples: |
+    - aktivasi kepesertaan layanan kesehatan keluarga
+    - aktivasi layanan kesehatan keluarga
+    - aktivasi kepesertaan anggota keluarga
+    - aktivasi kepesertaan pendaftaran layanan kesehatan
+    - aktivasi kepesertaan
+    - mengaktivasi kepesertaan
+    - proses aktivasi kepesertaan
+
+- intent: pendaftaran_kesehatan_anak
+  examples: |
+    - mendaftarkan anak pada layanan kesehatan
+    - mendaftarkan anak pada faskes 
+    - daftar anak layanan kesehatan
+    - daftar anak fasilitas kesehatan
+    - tata mendaftarkan anak pada faskes
+    - tata mendaftarkan anak pada layanan kesehatan
+
+
