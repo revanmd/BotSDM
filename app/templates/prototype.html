@@ -331,7 +331,7 @@ class Bot extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.handleCallback = this.handleCallback.bind(this);
-    fetch("http://localhost:5000/api/option", {
+    fetch("https://botsdm.pusri.co.id/api/option", {
       method: "GET"
     })
       .then((res) => res.json())
@@ -380,7 +380,7 @@ class Bot extends React.Component {
 
   handleCallback(childData) {
     const url =
-      "http://localhost:5000/api/option?kelas=" +
+      "https://botsdm.pusri.co.id/api/option?kelas=" +
       childData.kelas +
       "&level=" +
       (childData.level + 1) +
@@ -438,7 +438,7 @@ class Bot extends React.Component {
               msg: newline
             })
           );
-          fetch("http://localhost:5000/api/option", {
+          fetch("https://botsdm.pusri.co.id/api/option", {
             method: "GET"
           })
             .then((res) => res.json())
@@ -502,12 +502,12 @@ class Bot extends React.Component {
 
   appendData(e) {
     e.preventDefault();
-    fetch("http://localhost:5000/api", {
+    fetch("https://botsdm.pusri.co.id/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:5000",
+        "Access-Control-Allow-Origin": "https://botsdm.pusri.co.id",
         "Access-Control-Allow-Credentials": "true"
       },
       body: JSON.stringify({

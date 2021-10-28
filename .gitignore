@@ -6,3 +6,5 @@ dokumentasi_bot.txt
 /venv
 /rasa_x_env
 performance.txt
+*.save
+
