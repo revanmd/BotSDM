@@ -21,6 +21,7 @@ stories:
   - action: utter_cara_pesan
   - intent: melalui_sendiri
   - action: utter_cara_pesan_sendiri
+  - action: action_back_menu
 
 - story: hotel path 2
   steps:

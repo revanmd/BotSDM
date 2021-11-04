@@ -177,6 +177,9 @@ responses:
   utter_menu_reimburse_kacamata:
   - text: "Pertanyaan terkait reimburse kacamata : \n1. Plafon kacamata / limit biaya kacamata \n2. Berapa jangka waktu untuk klaim kacamata \n3. Bagaimana tata cara reimburse kacamata"
   
+actions:
+- action_back_menu
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

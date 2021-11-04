@@ -182,6 +182,12 @@ class model:
 		self.add_rule(2,2,'1',4,'Tata Cara Reimburse ke Asuransi Ramayana')
 		self.add_rule(2,2,'1',5,'Kartu Berobat Ramayana Hilang')
 		self.add_rule(2,2,'1',6,'Informasi Lainnya')
+
+		self.add_rule(2,3,'1-1',1,'!download https://iam.pusri.co.id/faqkesehatan/download/faq1')
+		self.add_rule(2,3,'1-2',1,'!download https://iam.pusri.co.id/faqkesehatan/download/faq2')
+		self.add_rule(2,2,'3',1,'!download https://iam.pusri.co.id/faqkesehatan/download/faq11_12')
+		self.add_rule(2,2,'4',1,'!download https://iam.pusri.co.id/faqkesehatan/download/faq11_12')
+
 		temp ="""
 		1. Jika peserta berobat di luar provider Ramayana tetapi tetap mengikuti prosedur berobat Asuransi Ramayana. Jika tidak sesuai prosedur, tidak dapat direimburse
 		   contoh : Misal,karyawan langsung berobat ke dokter spesialis penyakit dalam tanpa ada rujukan dari dokter umum terlebih dahulu, maka biaya tidak dapat direimburse ke Ramayana. 
