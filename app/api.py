@@ -1,13 +1,14 @@
 from flask import Blueprint,request, jsonify, make_response, render_template, session
 from flask import current_app as app
 from flask_cors import cross_origin
-from .models import model
+from .model import model
+from .history_model import history
 import requests
 
 api = Blueprint('api',__name__)
 rasa_endpoint = "http://localhost:5005/webhooks/rest/webhook"
 model = model()
-
+history = history()
 
 def rasa_handler(message):
 	res = requests.post(rasa_endpoint,json={'message':stopwords_removal(message)})
@@ -32,6 +33,15 @@ def main_handler():
 	output = {
 		'message':rasa_handler(message)
 	}
+
+	#Simpan hasil sebagai history
+	label = ""
+	if output['message'] == "Maaf kami tidak mengerti apa maksud anda.!menu":
+		label = "gagal"
+	else:
+		label = "berhasil"
+	history.insert_question(message,label)
+
 	return jsonify(output)
 
 @api.route('option',methods=['get'])
@@ -54,6 +64,9 @@ def option_handler():
 			data = model.get_item(int(label),1,"")
 	else:
 		data = model.get_item(0,0,"")
+
+	if len(data) == 1:
+		history.insert_option(data[0]['dari'])
 
 	return jsonify(data)
 

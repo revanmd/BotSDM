@@ -242,6 +242,44 @@
 						);
 					})
 				}
+				else if(output['message'].indexOf('!download') !== -1){
+					output['message'] = output['message'].replace('!download',"");
+					output['message'] = output['message'].replace(' ',"");
+
+					this.display.push(<ChatUser msg={this.state.value} />)
+					this.display.push(<DownloadBot msg={output['message']}/>)
+					
+					this.setState({
+						showdata:this.display,
+						value:""
+					})	
+
+					fetch('http://localhost:5000/api/option',{
+						method:'GET'
+					})
+					.then(res => res.json())
+					.then(opt => {
+
+						this.display.push(<ChatBot msg="Apakah ada pertanyaan lain ?"/>)
+						if(opt.length > 1){
+							for (var i = 0; i < opt.length; i++) {
+								this.option.push(<ButtonOption parentCallback = {this.handleCallback} kelas={opt[i]['kelas']} level={opt[i]['level']} dari={opt[i]['dari']} label={opt[i]['label']} message={opt[i]['message']}/>)
+							}
+						}
+						this.display.push(<div style={{marginTop: '7px',display: 'inline-block',marginBottom:'20px',marginLeft:'40px'}}>{this.option}</div>)
+
+						setTimeout(
+						  () => {
+						  	this.setState({
+								showdata:this.display
+							})
+							this.option = []
+						  }, 
+						  2500
+						);
+					})
+
+				}
 				else{
 					const newline = output['message'].split('\n').map(str => <p>{str}</p>);
 					this.setState({

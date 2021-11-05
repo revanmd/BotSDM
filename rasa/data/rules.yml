@@ -25,3 +25,4 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_res_tidak_mengerti
+  - action: action_back_menu

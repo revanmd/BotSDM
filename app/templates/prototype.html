@@ -210,8 +210,6 @@
 	<div id="app"></div>
 </body>
 <script type="text/javascript">
-"use strict";
-
 class ButtonOption extends React.Component {
   constructor(props) {
     super(props);
@@ -236,75 +234,125 @@ class ButtonOption extends React.Component {
   }
 
   render() {
-    return /*#__PURE__*/React.createElement("button", {
-      class: "button-option",
-      onClick: this.optionHandler
-    }, this.state.message);
+    return /*#__PURE__*/ React.createElement(
+      "button",
+      {
+        class: "button-option",
+        onClick: this.optionHandler
+      },
+      this.state.message
+    );
   }
-
 }
 
 class ChatUser extends React.Component {
   render() {
-    return /*#__PURE__*/React.createElement("div", {
-      class: "user-chat"
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "chatbox",
-      style: {
-        marginLeft: 'auto'
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "messagebox",
-      style: {
-        textAlign: 'right'
-      }
-    }, this.props.msg)), /*#__PURE__*/React.createElement("div", {
-      class: "avatar"
-    }, /*#__PURE__*/React.createElement("img", {
-      src: "/static/bot.png",
-      class: "bot-small"
-    })));
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        class: "user-chat"
+      },
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "chatbox",
+          style: {
+            marginLeft: "auto"
+          }
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "messagebox",
+            style: {
+              textAlign: "right"
+            }
+          },
+          this.props.msg
+        )
+      ),
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "avatar"
+        },
+        /*#__PURE__*/ React.createElement("img", {
+          src: "/static/bot.png",
+          class: "bot-small"
+        })
+      )
+    );
   }
-
 }
 
 class ChatBot extends React.Component {
   render() {
-    return /*#__PURE__*/React.createElement("div", {
-      class: "bot-chat"
-    }, /*#__PURE__*/React.createElement("img", {
-      src: "/static/bot.png",
-      class: "bot-small"
-    }), /*#__PURE__*/React.createElement("div", {
-      class: "chatbox"
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "messagebox"
-    }, this.props.msg)), /*#__PURE__*/React.createElement("div", {
-      class: "avatar"
-    }));
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        class: "bot-chat"
+      },
+      /*#__PURE__*/ React.createElement("img", {
+        src: "/static/bot.png",
+        class: "bot-small"
+      }),
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "chatbox"
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "messagebox"
+          },
+          this.props.msg
+        )
+      ),
+      /*#__PURE__*/ React.createElement("div", {
+        class: "avatar"
+      })
+    );
   }
-
 }
 
 class DownloadBot extends React.Component {
   render() {
-    return /*#__PURE__*/React.createElement("div", {
-      class: "bot-chat"
-    }, /*#__PURE__*/React.createElement("img", {
-      src: "/static/bot.png",
-      class: "bot-small"
-    }), /*#__PURE__*/React.createElement("div", {
-      class: "chatbox"
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "messagebox"
-    }, "Anda dapat mendownload ", /*#__PURE__*/React.createElement("a", {
-      href: this.props.msg,
-      download: true
-    }, "Berkas"))), /*#__PURE__*/React.createElement("div", {
-      class: "avatar"
-    }));
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        class: "bot-chat"
+      },
+      /*#__PURE__*/ React.createElement("img", {
+        src: "/static/bot.png",
+        class: "bot-small"
+      }),
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "chatbox"
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "messagebox"
+          },
+          "Anda dapat mendownload ",
+          /*#__PURE__*/ React.createElement(
+            "a",
+            {
+              href: this.props.msg,
+              download: true
+            },
+            "Berkas"
+          )
+        )
+      ),
+      /*#__PURE__*/ React.createElement("div", {
+        class: "avatar"
+      })
+    );
   }
-
 }
 
 class Bot extends React.Component {
@@ -323,126 +371,176 @@ class Bot extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.handleCallback = this.handleCallback.bind(this);
-    fetch('http://localhost:5000/api/option', {
-      method: 'GET'
-    }).then(res => res.json()).then(opt => {
-      this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-        msg: "Apakah ada yang bisa saya bantu ?"
-      }));
+    fetch("http://localhost:5000/api/option", {
+      method: "GET"
+    })
+      .then((res) => res.json())
+      .then((opt) => {
+        this.display.push(
+          /*#__PURE__*/ React.createElement(ChatBot, {
+            msg: "Apakah ada yang bisa saya bantu ?"
+          })
+        );
 
-      if (opt.length > 1) {
-        for (var i = 0; i < opt.length; i++) {
-          this.option.push( /*#__PURE__*/React.createElement(ButtonOption, {
-            parentCallback: this.handleCallback,
-            kelas: opt[i]['kelas'],
-            level: opt[i]['level'],
-            dari: opt[i]['dari'],
-            label: opt[i]['label'],
-            message: opt[i]['message']
-          }));
+        if (opt.length > 1) {
+          for (var i = 0; i < opt.length; i++) {
+            this.option.push(
+              /*#__PURE__*/ React.createElement(ButtonOption, {
+                parentCallback: this.handleCallback,
+                kelas: opt[i]["kelas"],
+                level: opt[i]["level"],
+                dari: opt[i]["dari"],
+                label: opt[i]["label"],
+                message: opt[i]["message"]
+              })
+            );
+          }
         }
-      }
 
-      this.display.push( /*#__PURE__*/React.createElement("div", {
-        style: {
-          marginTop: '7px',
-          display: 'inline-block',
-          marginBottom: '20px',
-          marginLeft: '40px'
-        }
-      }, this.option));
-      this.setState({
-        showdata: this.display
+        this.display.push(
+          /*#__PURE__*/ React.createElement(
+            "div",
+            {
+              style: {
+                marginTop: "7px",
+                display: "inline-block",
+                marginBottom: "20px",
+                marginLeft: "40px"
+              }
+            },
+            this.option
+          )
+        );
+        this.setState({
+          showdata: this.display
+        });
+        this.option = [];
       });
-      this.option = [];
-    });
   }
 
   handleCallback(childData) {
-    const url = 'http://localhost:5000/api/option?kelas=' + childData.kelas + '&level=' + (childData.level + 1) + '&label=' + childData.label + '&dari=' + childData.dari;
+    const url =
+      "http://localhost:5000/api/option?kelas=" +
+      childData.kelas +
+      "&level=" +
+      (childData.level + 1) +
+      "&label=" +
+      childData.label +
+      "&dari=" +
+      childData.dari;
     this.choosenOption = childData.message;
     console.log(url);
     fetch(url, {
-      method: 'GET'
-    }).then(res => res.json()).then(opt => {
-      if (opt.length > 1) {
-        for (var i = 0; i < opt.length; i++) {
-          this.option.push( /*#__PURE__*/React.createElement(ButtonOption, {
-            parentCallback: this.handleCallback,
-            kelas: opt[i]['kelas'],
-            level: opt[i]['level'],
-            dari: opt[i]['dari'],
-            label: opt[i]['label'],
-            message: opt[i]['message']
-          }));
-        }
-
-        this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-          msg: this.choosenOption
-        }));
-        this.display.push( /*#__PURE__*/React.createElement("div", {
-          style: {
-            marginTop: '7px',
-            display: 'inline-block',
-            marginBottom: '20px',
-            marginLeft: '40px'
-          }
-        }, this.option));
-      } else {
-        if (opt[0]['message'].split(' ')[0] == '!download') {
-          let link = opt[0]['message'].split(' ')[1];
-          this.display.push( /*#__PURE__*/React.createElement(DownloadBot, {
-            msg: link
-          }));
-        } else {
-          const newline = opt[0]['message'].split('\n').map(str => /*#__PURE__*/React.createElement("p", null, str));
-          this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-            msg: newline
-          }));
-        }
-
-        fetch('http://localhost:5000/api/option', {
-          method: 'GET'
-        }).then(res => res.json()).then(opt => {
-          this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-            msg: "Apakah ada pertanyaan lain ?"
-          }));
-
-          if (opt.length > 1) {
-            for (var i = 0; i < opt.length; i++) {
-              this.option.push( /*#__PURE__*/React.createElement(ButtonOption, {
+      method: "GET"
+    })
+      .then((res) => res.json())
+      .then((opt) => {
+        if (opt.length > 1) {
+          for (var i = 0; i < opt.length; i++) {
+            this.option.push(
+              /*#__PURE__*/ React.createElement(ButtonOption, {
                 parentCallback: this.handleCallback,
-                kelas: opt[i]['kelas'],
-                level: opt[i]['level'],
-                dari: opt[i]['dari'],
-                label: opt[i]['label'],
-                message: opt[i]['message']
-              }));
-            }
+                kelas: opt[i]["kelas"],
+                level: opt[i]["level"],
+                dari: opt[i]["dari"],
+                label: opt[i]["label"],
+                message: opt[i]["message"]
+              })
+            );
           }
 
-          this.display.push( /*#__PURE__*/React.createElement("div", {
-            style: {
-              marginTop: '7px',
-              display: 'inline-block',
-              marginBottom: '20px',
-              marginLeft: '40px'
-            }
-          }, this.option));
-          setTimeout(() => {
-            this.setState({
-              showdata: this.display
-            });
-            this.option = [];
-          }, 2500);
-        });
-      }
+          this.display.push(
+            /*#__PURE__*/ React.createElement(ChatBot, {
+              msg: this.choosenOption
+            })
+          );
+          this.display.push(
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                style: {
+                  marginTop: "7px",
+                  display: "inline-block",
+                  marginBottom: "20px",
+                  marginLeft: "40px"
+                }
+              },
+              this.option
+            )
+          );
+        } else {
+          if (opt[0]["message"].split(" ")[0] == "!download") {
+            let link = opt[0]["message"].split(" ")[1];
+            this.display.push(
+              /*#__PURE__*/ React.createElement(DownloadBot, {
+                msg: link
+              })
+            );
+          } else {
+            const newline = opt[0]["message"]
+              .split("\n")
+              .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatBot, {
+                msg: newline
+              })
+            );
+          }
 
-      this.setState({
-        showdata: this.display
+          fetch("http://localhost:5000/api/option", {
+            method: "GET"
+          })
+            .then((res) => res.json())
+            .then((opt) => {
+              this.display.push(
+                /*#__PURE__*/ React.createElement(ChatBot, {
+                  msg: "Apakah ada pertanyaan lain ?"
+                })
+              );
+
+              if (opt.length > 1) {
+                for (var i = 0; i < opt.length; i++) {
+                  this.option.push(
+                    /*#__PURE__*/ React.createElement(ButtonOption, {
+                      parentCallback: this.handleCallback,
+                      kelas: opt[i]["kelas"],
+                      level: opt[i]["level"],
+                      dari: opt[i]["dari"],
+                      label: opt[i]["label"],
+                      message: opt[i]["message"]
+                    })
+                  );
+                }
+              }
+
+              this.display.push(
+                /*#__PURE__*/ React.createElement(
+                  "div",
+                  {
+                    style: {
+                      marginTop: "7px",
+                      display: "inline-block",
+                      marginBottom: "20px",
+                      marginLeft: "40px"
+                    }
+                  },
+                  this.option
+                )
+              );
+              setTimeout(() => {
+                this.setState({
+                  showdata: this.display
+                });
+                this.option = [];
+              }, 2500);
+            });
+        }
+
+        this.setState({
+          showdata: this.display
+        });
+        this.option = [];
       });
-      this.option = [];
-    });
   }
 
   scrollToBottom() {
@@ -453,87 +551,177 @@ class Bot extends React.Component {
 
   appendData(e) {
     e.preventDefault();
-    fetch('http://localhost:5000/api', {
-      method: 'POST',
+    fetch("http://localhost:5000/api", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': 'https://botsdm.pusri.co.id',
-        'Access-Control-Allow-Credentials': 'true'
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "https://botsdm.pusri.co.id",
+        "Access-Control-Allow-Credentials": "true"
       },
       body: JSON.stringify({
-        'msg': this.state.value
+        msg: this.state.value
       })
-    }).then(res => res.json()).then(output => {
-      if (output['message'].indexOf('!menu') !== -1) {
-        output['message'] = output['message'].replace('!menu', " ");
-        const newline = output['message'].split('\n').map(str => /*#__PURE__*/React.createElement("p", null, str));
-        this.setState({
-          output: newline
-        });
-        this.display.push( /*#__PURE__*/React.createElement(ChatUser, {
-          msg: this.state.value
-        }));
-        this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-          msg: this.state.output
-        }));
-        this.setState({
-          showdata: this.display,
-          value: ""
-        });
-        fetch('http://localhost:5000/api/option', {
-          method: 'GET'
-        }).then(res => res.json()).then(opt => {
-          this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-            msg: "Apakah ada pertanyaan lain ?"
-          }));
+    })
+      .then((res) => res.json())
+      .then((output) => {
+        if (output["message"].indexOf("!menu") !== -1) {
+          output["message"] = output["message"].replace("!menu", " ");
+          const newline = output["message"]
+            .split("\n")
+            .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+          this.setState({
+            output: newline
+          });
+          this.display.push(
+            /*#__PURE__*/ React.createElement(ChatUser, {
+              msg: this.state.value
+            })
+          );
+          this.display.push(
+            /*#__PURE__*/ React.createElement(ChatBot, {
+              msg: this.state.output
+            })
+          );
+          this.setState({
+            showdata: this.display,
+            value: ""
+          });
+          fetch("http://localhost:5000/api/option", {
+            method: "GET"
+          })
+            .then((res) => res.json())
+            .then((opt) => {
+              this.display.push(
+                /*#__PURE__*/ React.createElement(ChatBot, {
+                  msg: "Apakah ada pertanyaan lain ?"
+                })
+              );
 
-          if (opt.length > 1) {
-            for (var i = 0; i < opt.length; i++) {
-              this.option.push( /*#__PURE__*/React.createElement(ButtonOption, {
-                parentCallback: this.handleCallback,
-                kelas: opt[i]['kelas'],
-                level: opt[i]['level'],
-                dari: opt[i]['dari'],
-                label: opt[i]['label'],
-                message: opt[i]['message']
-              }));
-            }
-          }
+              if (opt.length > 1) {
+                for (var i = 0; i < opt.length; i++) {
+                  this.option.push(
+                    /*#__PURE__*/ React.createElement(ButtonOption, {
+                      parentCallback: this.handleCallback,
+                      kelas: opt[i]["kelas"],
+                      level: opt[i]["level"],
+                      dari: opt[i]["dari"],
+                      label: opt[i]["label"],
+                      message: opt[i]["message"]
+                    })
+                  );
+                }
+              }
 
-          this.display.push( /*#__PURE__*/React.createElement("div", {
-            style: {
-              marginTop: '7px',
-              display: 'inline-block',
-              marginBottom: '20px',
-              marginLeft: '40px'
-            }
-          }, this.option));
-          setTimeout(() => {
-            this.setState({
-              showdata: this.display
+              this.display.push(
+                /*#__PURE__*/ React.createElement(
+                  "div",
+                  {
+                    style: {
+                      marginTop: "7px",
+                      display: "inline-block",
+                      marginBottom: "20px",
+                      marginLeft: "40px"
+                    }
+                  },
+                  this.option
+                )
+              );
+              setTimeout(() => {
+                this.setState({
+                  showdata: this.display
+                });
+                this.option = [];
+              }, 2500);
             });
-            this.option = [];
-          }, 2500);
-        });
-      } else {
-        const newline = output['message'].split('\n').map(str => /*#__PURE__*/React.createElement("p", null, str));
-        this.setState({
-          output: newline
-        });
-        this.display.push( /*#__PURE__*/React.createElement(ChatUser, {
-          msg: this.state.value
-        }));
-        this.display.push( /*#__PURE__*/React.createElement(ChatBot, {
-          msg: this.state.output
-        }));
-        this.setState({
-          showdata: this.display,
-          value: ""
-        });
-      }
-    });
-    console.log('submit');
+        } else if (output["message"].indexOf("!download") !== -1) {
+          output["message"] = output["message"].replace("!download", "");
+          output["message"] = output["message"].replace(" ", "");
+          this.display.push(
+            /*#__PURE__*/ React.createElement(ChatUser, {
+              msg: this.state.value
+            })
+          );
+          this.display.push(
+            /*#__PURE__*/ React.createElement(DownloadBot, {
+              msg: output["message"]
+            })
+          );
+          this.setState({
+            showdata: this.display,
+            value: ""
+          });
+          fetch("http://localhost:5000/api/option", {
+            method: "GET"
+          })
+            .then((res) => res.json())
+            .then((opt) => {
+              this.display.push(
+                /*#__PURE__*/ React.createElement(ChatBot, {
+                  msg: "Apakah ada pertanyaan lain ?"
+                })
+              );
+
+              if (opt.length > 1) {
+                for (var i = 0; i < opt.length; i++) {
+                  this.option.push(
+                    /*#__PURE__*/ React.createElement(ButtonOption, {
+                      parentCallback: this.handleCallback,
+                      kelas: opt[i]["kelas"],
+                      level: opt[i]["level"],
+                      dari: opt[i]["dari"],
+                      label: opt[i]["label"],
+                      message: opt[i]["message"]
+                    })
+                  );
+                }
+              }
+
+              this.display.push(
+                /*#__PURE__*/ React.createElement(
+                  "div",
+                  {
+                    style: {
+                      marginTop: "7px",
+                      display: "inline-block",
+                      marginBottom: "20px",
+                      marginLeft: "40px"
+                    }
+                  },
+                  this.option
+                )
+              );
+              setTimeout(() => {
+                this.setState({
+                  showdata: this.display
+                });
+                this.option = [];
+              }, 2500);
+            });
+        } else {
+          const newline = output["message"]
+            .split("\n")
+            .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+          this.setState({
+            output: newline
+          });
+          this.display.push(
+            /*#__PURE__*/ React.createElement(ChatUser, {
+              msg: this.state.value
+            })
+          );
+          this.display.push(
+            /*#__PURE__*/ React.createElement(ChatBot, {
+              msg: this.state.output
+            })
+          );
+          this.setState({
+            showdata: this.display,
+            value: ""
+          });
+        }
+      });
+    console.log("submit");
   }
 
   handleChange(e) {
@@ -545,24 +733,34 @@ class Bot extends React.Component {
 
   componentDidMount() {
     function invoke() {
-      var menu = $('.menu-bot');
-      menu.css('display', 'block');
+      var menu = $(".menu-bot");
+      menu.css("display", "block");
       var tl = new TimelineMax();
       tl.to(menu, 0.5, {
         opacity: 1
       });
-      tl.to(menu, 1, {
-        y: 0,
-        ease: Power2.easeOut
-      }, 0);
-      var layout = $('.box-layout');
-      tl.to(layout, 0.2, {
-        opacity: 0
-      }, 0);
-      $('#inputbox').focus();
+      tl.to(
+        menu,
+        1,
+        {
+          y: 0,
+          ease: Power2.easeOut
+        },
+        0
+      );
+      var layout = $(".box-layout");
+      tl.to(
+        layout,
+        0.2,
+        {
+          opacity: 0
+        },
+        0
+      );
+      $("#inputbox").focus();
     }
 
-    $('.box-layout').click(function () {
+    $(".box-layout").click(function () {
       invoke();
     });
     this.scrollToBottom();
@@ -573,69 +771,141 @@ class Bot extends React.Component {
   }
 
   render() {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      class: "menu-bot"
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "header-menu"
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        margin: '13px 20px'
-      }
-    }, /*#__PURE__*/React.createElement("img", {
-      id: "image-big",
-      src: "/static/bot.png"
-    }), /*#__PURE__*/React.createElement("div", {
-      id: "font-big"
-    }, "Lastri SDM", /*#__PURE__*/React.createElement("span", {
-      id: "online"
-    }, "Online")))), /*#__PURE__*/React.createElement("div", {
-      class: "main-menu"
-    }, /*#__PURE__*/React.createElement("div", null, this.state.showdata), /*#__PURE__*/React.createElement("div", {
-      style: {
-        float: "left",
-        clear: "both"
-      },
-      ref: el => {
-        this.messagesEnd = el;
-      }
-    })), /*#__PURE__*/React.createElement("div", {
-      class: "footer-menu"
-    }, /*#__PURE__*/React.createElement("form", {
-      id: "input-form",
-      onSubmit: this.appendData
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "input-box"
-    }, /*#__PURE__*/React.createElement("input", {
-      type: "text",
-      value: this.state.value,
-      onChange: this.handleChange,
-      name: "",
-      placeholder: "Ketik pertanyaan anda disini",
-      style: {
-        border: 'none',
-        width: '100%'
-      },
-      id: "inputbox"
-    })), /*#__PURE__*/React.createElement("div", {
-      class: "button-box"
-    }, /*#__PURE__*/React.createElement("button", {
-      id: "buttonz"
-    }, "\xA0"))))), /*#__PURE__*/React.createElement("div", {
-      class: "box-layout"
-    }, /*#__PURE__*/React.createElement("div", {
-      class: "wrapper"
-    }, /*#__PURE__*/React.createElement("div", {
-      id: "header-bot"
-    }, "Mau tanya Lastri ?")), /*#__PURE__*/React.createElement("div", {
-      id: "button-bot"
-    })), /*#__PURE__*/React.createElement("div", {
-      class: "main-layout"
-    }));
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      null,
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "menu-bot"
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "header-menu"
+          },
+          /*#__PURE__*/ React.createElement(
+            "div",
+            {
+              style: {
+                margin: "13px 20px"
+              }
+            },
+            /*#__PURE__*/ React.createElement("img", {
+              id: "image-big",
+              src: "/static/bot.png"
+            }),
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                id: "font-big"
+              },
+              "Lastri SDM",
+              /*#__PURE__*/ React.createElement(
+                "span",
+                {
+                  id: "online"
+                },
+                "Online"
+              )
+            )
+          )
+        ),
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "main-menu"
+          },
+          /*#__PURE__*/ React.createElement("div", null, this.state.showdata),
+          /*#__PURE__*/ React.createElement("div", {
+            style: {
+              float: "left",
+              clear: "both"
+            },
+            ref: (el) => {
+              this.messagesEnd = el;
+            }
+          })
+        ),
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "footer-menu"
+          },
+          /*#__PURE__*/ React.createElement(
+            "form",
+            {
+              id: "input-form",
+              onSubmit: this.appendData
+            },
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                class: "input-box"
+              },
+              /*#__PURE__*/ React.createElement("input", {
+                type: "text",
+                value: this.state.value,
+                onChange: this.handleChange,
+                name: "",
+                placeholder: "Ketik pertanyaan anda disini",
+                style: {
+                  border: "none",
+                  width: "100%"
+                },
+                id: "inputbox"
+              })
+            ),
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                class: "button-box"
+              },
+              /*#__PURE__*/ React.createElement(
+                "button",
+                {
+                  id: "buttonz"
+                },
+                "\xA0"
+              )
+            )
+          )
+        )
+      ),
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "box-layout"
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "wrapper"
+          },
+          /*#__PURE__*/ React.createElement(
+            "div",
+            {
+              id: "header-bot"
+            },
+            "Mau tanya Lastri ?"
+          )
+        ),
+        /*#__PURE__*/ React.createElement("div", {
+          id: "button-bot"
+        })
+      ),
+      /*#__PURE__*/ React.createElement("div", {
+        class: "main-layout"
+      })
+    );
   }
-
 }
 
-ReactDOM.render( /*#__PURE__*/React.createElement(Bot, null), document.getElementById('app'));
+ReactDOM.render(
+  /*#__PURE__*/ React.createElement(Bot, null),
+  document.getElementById("app")
+);
+
 
 </script>
 

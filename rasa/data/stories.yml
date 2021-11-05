@@ -13,6 +13,7 @@ stories:
   - action: utter_greeting
   - intent: tidak
   - action: utter_terima_kasih
+  - action: action_back_menu
 
 
 - story: hotel path 1
@@ -32,6 +33,7 @@ stories:
   - intent: ya
   - action: utter_cek_hotel_perusahaan
   - action: utter_cara_pesan_perusahaan
+  - action: action_back_menu
 
 - story: hotel path 3
   steps:
@@ -41,6 +43,7 @@ stories:
   - action: utter_ans_cara_perusahaan
   - intent: tidak
   - action: utter_cara_pesan_perusahaan
+  - action: action_back_menu
 
 - story: cek hotel perusahaan
   steps:
@@ -66,6 +69,7 @@ stories:
   steps:
   - intent: reimburse_biaya_kesehatan
   - action: utter_ans_daftar_biaya_direimburse
+  - action: action_back_menu
 
 - story: tata cara reimburse asuransi path 1
   steps:
@@ -73,6 +77,7 @@ stories:
   - action: utter_ans_tata_cara_reimburse_menu
   - intent: rawat_jalan
   - action: utter_ans_tata_cara_rawat_jalan
+  - action: action_back_menu
 
 - story: tata cara reimburse asuransi path 2
   steps:
@@ -80,46 +85,37 @@ stories:
   - action: utter_ans_tata_cara_reimburse_menu
   - intent: rawat_inap
   - action: utter_ans_tata_cara_rawat_inap
+  - action: action_back_menu
 
 - story: batas waktu reimburse asuransi
   steps:
   - intent: batas_waktu_klaim
   - action: utter_ans_batas_waktu_klaim
+  - action: action_back_menu
 
 - story: dokumen pengajuan asuransi
   steps:
   - intent: dokumen_pengajuan
   - action: utter_ans_penyerahan_dokumen
+  - action: action_back_menu
 
 - story: kartu berobat hilang
   steps:
   - intent: kartu_berobat_hilang
   - action: utter_ans_kartu_berobat_hilang
+  - action: action_back_menu
 
 - story: cara mengubah faskes
   steps:
   - intent: cara_mengubah_faskes
   - action: utter_ans_ganti_faskes
+  - action: action_back_menu
 
 - story: kartu bpjs hilang
   steps:
   - intent: kartu_bpjs_hilang 
   - action: utter_ans_bpjs_hilang
-
-- story: plafon kacamata
-  steps:
-  - intent: plafon_kacamata
-  - action: utter_ans_plafon_kacamata
-
-- story: jangka waktu klaim kacamata
-  steps:
-  - intent: jangka_waktu_kacamata
-  - action: utter_ans_tata_cara
-
-- story: tata cara klaim kacamata
-  steps:
-  - intent: tata_cara_kacamata
-  - action: utter_ans_tata_cara
+  - action: action_back_menu
 
 - story: klaim autism
   steps:
@@ -130,33 +126,71 @@ stories:
   steps:
   - intent: ketentuan_telemedicine
   - action: utter_ans_ketentuan_telemedicine
+  - action: action_back_menu
 
 - story: dokumen telemedicine
   steps:
   - intent: dokumen_telemedicine
   - action: utter_ans_dokumen_telemedicine
+  - action: action_back_menu
 
 - story: pendaftaran kesehatan pasutri
   steps:
   - intent: pendaftaran_kesehatan_pasutri
   - action: utter_ans_pendaftaran_pasutri
+  - action: action_back_menu
 
 - story: ketentuan pendaftaran pasutri
   steps:
   - intent: ketentuan_pendaftaran_kesehatan_pasutri
   - action: utter_ans_ketentuan_pasutri
+  - action: action_back_menu
 
 - story: pendaftaran kesehatan anak
   steps:
   - intent: ketentuan_pendaftaran_kesehatan_anak 
   - action: utter_ans_ketentuan_anak
+  - action: action_back_menu
 
 - story: dokumen pendaftaran keluarga
   steps:
   - intent: pengumpulan_dokumen_pendaftaran_keluarga
   - action: utter_ans_dokumen_pendaftaran
+  - action: action_back_menu
 
 - story: aktivasi kepesertaan
   steps:
   - intent: aktivasi_kepesertaan
   - action: utter_ans_aktivasi_kepesertaan
+  - action: action_back_menu
+
+- story: menu pendaftaran kesehatan keluarga
+  steps:
+  - intent: pendaftaran_kesehatan_keluarga
+  - action: utter_menu_pendaftaran_keluarga
+
+- story: menu dinas sppd
+  steps:
+
+  - intent: dinas_sppd
+  - action: utter_menu_dinas
+
+- story: menu asuransi kesehatan
+  steps:
+  - intent: asuransi_kesehatan
+  - action: utter_menu_asuransi_kesehatan
+
+- story: menu hotel dinas
+  steps:
+  - intent: hotel_dinas
+  - action: utter_menu_hotel_dinas
+
+- story: menu layanan kesehatan
+  steps:
+  - intent: layanan_kesehatan
+  - action: utter_menu_layanan_kesehatan
+
+- story: menu klaim kacamata
+  steps:
+  - intent: klaim_kacamata
+  - action: utter_ans_klaim_autism

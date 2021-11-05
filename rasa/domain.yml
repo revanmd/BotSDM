@@ -24,9 +24,6 @@ intents:
   - cara_mengubah_faskes
   - kartu_bpjs_hilang
   - klaim_kacamata
-  - plafon_kacamata
-  - jangka_waktu_kacamata
-  - tata_cara_kacamata
   - klaim_autism
   - ketentuan_telemedicine
   - dokumen_telemedicine
@@ -37,6 +34,10 @@ intents:
   - ketentuan_pendaftaran_kesehatan_anak
   - pengumpulan_dokumen_pendaftaran_keluarga
   - aktivasi_kepesertaan
+  - asuransi_kesehatan
+  - dinas_sppd
+  - hotel_dinas
+  - layanan_kesehatan
 
 forms:
   form_badge:
@@ -91,10 +92,10 @@ responses:
   - text: "Terima kasih kembali, semoga membantu."
 
   utter_ans_rincian_benefit_prosedur:
-  - text: "Berikut ini adalah rincian benefit serta prosedur untuk berobat menggunakan asuransi ramayana. anda dapat mendownloadnya disini"
+  - text: "!download https://iam.pusri.co.id/faqkesehatan/download/faq1"
 
   utter_ans_daftar_provider_asuransi:
-  - text: "Anda dapat mengetahui daftar provider asuransi ramayana dengan mengunduh berkas dibawah ini"
+  - text: "!download https://iam.pusri.co.id/faqkesehatan/download/faq2"
 
   utter_ans_tata_cara_reimburse_menu:
   - text: "Mengenai reimburse asuransi kesehatan terdapat dua prosedur bergantung dengan jenis perawatan anda. \nPada saat melakukan pengobatan anda dirawat secara rawat inap atau rawat jalan ?"
@@ -123,14 +124,8 @@ responses:
   utter_ans_bpjs_hilang:
   - text: "Jika kartu BPJS Kesehatan hilang, peserta dapat mencetak sendiri e-card melalui aplikasi JKN Mobile atau dapat meminta untuk dicetak ulang oleh Departemen Ketenagakerjaan dan Hubungan Industrial dengan membawa surat keterangan kehilangan kartu BPJS Kesehatan dari kepolisian."
 
-  utter_ans_plafon_kacamata:
-  - text: "Biaya penggantian kacamata maksimal sebesar Rp. 500.000,- Frame Rp. 200.000,- Lensa Rp. 300.000,-"
-
-  utter_ans_tata_cara:
-  - text: "Untuk pekerja diberikan 2 tahun sekali dan untuk keluarga pekerja diberikan 3 tahun sekali dari pengajuan klaim sebelumnya sesuai data klaim di sistem ESS"
-
   utter_ans_klaim_autism:
-  - text: "Anda mendowload berkas persyaratan dan ketentuan untuk klaim autisme dibawah ini"
+  - text: "!download https://iam.pusri.co.id/faqkesehatan/download/faq11_12"
 
   utter_ans_ketentuan_telemedicine:
   - text: "1. Metode klaim adalah dengan cara reimbursement dengan biaya pengobatan telemedicine maksimal Rp. 1.000.000 (Satu Juta Rupiah. \n2. Hanya bisa untuk pengobatan di Rumah Sakit yang menyelenggarakan telemedicine. \n3. Prosedur pengobatan adalah berjenjang (melalui dokter umum terlebih dahulu, kecuali 5 dokter spesialis tanpa rujukan : Anak, Mata, THT, Obgyn dan Gigi Spesialis). \n4. Jika pengobatan langsung ke dokter spesialis, maka biaya dokter akan diganti sesuai dengan biaya dokter umum."
@@ -163,20 +158,20 @@ responses:
   - text: "Hai, apakah ada yang bisa saya bantu ? \n \nKami bisa menjawab pertanyaan mengenai : \n1. Pemesanan hotel dinas \n2. Asuransi ramayana \n3. Ketentuan Telemedicine \n4. Pendaftaran askes anggota keluarga \n5. Kartu BPJS Hilang"
   
   utter_menu_layanan_kesehatan:
-  - text: "Pertanyaan terkait layanan kesehatan : \n1. Mengenai asuransi kesehatan \n2. Mengenai klaim kacamata \n3. Mengenai pendaftaran anggota keluarga \n4. Bagaimana mengubah fasilitas kesehatan BPJS \n5. Bagaimana mengurus kartu BPJS hilang \n6. Bagaimana mengurus kartu berobat hilang \n6. Ketentuan atau dokumen telemedicine"
+  - text: "Pertanyaan terkait layanan kesehatan : \n1. Asuransi kesehatan \n2. Klaim kacamata \n3. Pendaftaran anggota keluarga \n4. Bagaimana mengubah fasilitas kesehatan BPJS \n5. Bagaimana mengurus kartu BPJS hilang \n6. Bagaimana mengurus kartu berobat hilang \n6. Ketentuan atau dokumen telemedicine"
 
   utter_menu_hotel_dinas:
-  - text: "Pertanyaan terkait hotel dinas : \n1. Bagaimana cara pesan hotel dinas \n2. Cek budget hotel dinas \n3. Bagaimana cara reschedule pesanan \n4. Bagaimana cara pembatalan pesanan"
+  - text: "Pertanyaan terkait hotel: \n1. Bagaimana cara pesan hotel \n2. Cek budget hotel \n3. Bagaimana cara reschedule pesanan \n4. Bagaimana cara pembatalan pesanan"
 
-  utter_menu_asuransi_ramayana:
-  - text: "Pertanyaan terkait asuransi kesehatan / asuransi ramayana : \n1. Apa saja manfaat menggunakan asuransi ramayana  \n2. Cek provider asuransi kesehatan ramayana \n3. Berapa biaya penggantian asuransi ramayana \n4. Bagaimana prosedur klaim reimbursement karyawan \n5. Berapa lama batas waktu klaim asuransi \n6. Cek dokumen pengajuan asuransi kesehatan ramayana \n7. Kartu berobat ramayana hilang"
+  utter_menu_asuransi_kesehatan:
+  - text: "Pertanyaan terkait asuransi kesehatan / asuransi ramayana : \n1. Apa saja manfaat menggunakan asuransi ramayana  \n2. Cek provider asuransi kesehatan ramayana \n3. Berapa biaya direimburse asuransi \n4. Klaim reimburseme asuransi \n5. Berapa lama batas waktu klaim asuransi \n6. Cek dokumen pengajuan asuransi kesehatan ramayana \n7. Kartu berobat ramayana hilang"
 
   utter_menu_pendaftaran_keluarga:
   - text: "Pertanyaan terkait pendaftaran keluarga : \n1. Bagaimana cara mendaftarkan suami / istri pada layanan kesehatan \n2. Ketentuan pendaftaran suami / istri \n3. Bagaimana cara mendaftarkan anak pada layanan kesehatan \n4. Ketentuan pendaftaran anak \n5. Bagaimana pengumpulan dokumen "
 
-  utter_menu_reimburse_kacamata:
-  - text: "Pertanyaan terkait reimburse kacamata : \n1. Plafon kacamata / limit biaya kacamata \n2. Berapa jangka waktu untuk klaim kacamata \n3. Bagaimana tata cara reimburse kacamata"
-  
+  utter_menu_dinas:
+  - text: "Pertanyaan terkait Dinas / SPPD : \n1. Pengajuan Dinas \n2. Transportasi Dinas \n3. Laporan Dinas \n4. Hotel Dinas"
+
 actions:
 - action_back_menu
 

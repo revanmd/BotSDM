@@ -13,10 +13,6 @@ nlu:
     - asuransi kesehatan
     - asuransi ramayana
 
-- synonym: layanan_kesehatan
-  examples: |
-    - layanan kesehatan
-
 - intent: greeting
   examples: |
     - selamat pagi
@@ -28,6 +24,9 @@ nlu:
     - hai admin
     - hai bot
     - saya bertanya
+    - assalamualaikum
+    - ass
+    - asslmulaikum
 
 - intent: cara_pesan_hotel
   examples: |
@@ -106,17 +105,20 @@ nlu:
 
 - intent: rincian_benefit_ramayana
   examples : |
-    - rincian benefit asuransi ramayana
     - keuntungan asuransi ramayana 
+    - profit asuransi ramayana
     - manfaat asuransi ramayana
+    - rincian benefit asuransi ramayana
+    - didapatkan dengan asuransi ramayana
+    - manfaat diberikan asuransi ramayana
 
 - intent: prosedur_asuransi_ramayana 
   examples : |
     - prosedur asuransi ramayana
-    - prosedur penggunaan asuransi ramayana
-    - prosedur menggunakan asuransi
-    - tata menggunakan asuransi ramayana
-    - tata asuransi kesehatan
+    - prosedur memakai asuransi ramayana
+    - proses asuransi ramayana
+    - rincian prosedur asuransi ramayana
+    - tata cara asuransi ramayana
 
 - intent: daftar_provider_ramayana
   examples : |
@@ -130,19 +132,21 @@ nlu:
 
 - intent: reimburse_biaya_kesehatan 
   examples : |
-    - biaya ditanggung asuransi
-    - biaya direimburse asuransi
-    - biaya digantikan asuransi
-    - biaya direimbursement
-    - biaya kesehatan ditanggung
     - biaya kesehatan direimburse
+    - biaya kesehatan reimburse
+    - biaya kesehatan diganti
+    - biaya kesehatan asuransi kesehatan
+    - biaya kesehatan diganti asuransi
+    - biaya kesehatan reimburse asuransi
 
 - intent: tata_cara_reimburse
   examples : |
-    - tata reimburse asuransi
-    - tata mengajukan reimbursement
-    - tata mengajukan reimburse asuransi
-    - prosedur pengajuan reimbusement
+    - tata reimburse asuransi ramayana
+    - tata mengajukan reimburse asuransi ramayana
+    - reimburse asuransi ramayana
+    - reimburse asuransi kesehatan
+    - tata klaim asuransi kesehatan
+    - prosedur klaim asuransi ramayana
     
 - intent: rawat_jalan
   examples : |
@@ -229,11 +233,11 @@ nlu:
 
 - intent: pendaftaran_kesehatan_keluarga
   examples: |
-    - pendaftaran anggota keluarga
     - pendaftaran keluarga
-    - pendaftaran keluarga pada layanan kesehatan
-    - pendaftaran keluarga pada asuransi
-    - pendaftaran anggota keluarga pada layanan kesehatan
+    - pendaftaran kluarga
+    - daftar asuransi keluarga
+    - pendaftaran asuransi keluarga
+    - pendaftaran kesehatan keluarga
 
 - intent: pendaftaran_kesehatan_pasutri
   examples: |
@@ -318,10 +322,11 @@ nlu:
 
 - intent: layanan_kesehatan
   examples : |
+    - layanan ksehatan
     - layanan kesehatan
-    - layanann kesehatan
-    - layanan kesehatann
-    - layanan ksehatann
+    - layanan ksehatan
+    - kesehatan
+    - ksehatan
 
 - intent: klaim_kacamata
   examples : |
