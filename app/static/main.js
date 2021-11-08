@@ -747,19 +747,6 @@ class Bot extends React.Component {
         {
           class: "box-layout"
         },
-        /*#__PURE__*/ React.createElement(
-          "div",
-          {
-            class: "wrapper"
-          },
-          /*#__PURE__*/ React.createElement(
-            "div",
-            {
-              id: "header-bot"
-            },
-            "Mau tanya Lastri ?"
-          )
-        ),
         /*#__PURE__*/ React.createElement("div", {
           id: "button-bot"
         })

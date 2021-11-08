@@ -30,6 +30,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_masukan_kendala
+  - action : action_submit_masukan
   - action: action_reset
 
 
