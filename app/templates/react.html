@@ -40,7 +40,7 @@
 							{this.props.msg}
 						</div>
 					</div>
-					<div class='avatar'>
+					<div class='avatar-bot'>
 						<img src='/static/bot.png' class='bot-small'/>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 							{this.props.msg}
 						</div>
 					</div>
-					<div class='avatar'></div>
+					<div class='avatar-bot'></div>
 				</div>
 			)
 		}
@@ -74,7 +74,7 @@
 							Anda dapat mendownload <a href={this.props.msg} download>Berkas</a>
 						</div>
 					</div>
-					<div class='avatar'></div>
+					<div class='avatar-bot'></div>
 				</div>
 			)
 		}
@@ -138,6 +138,20 @@
 					this.display.push(<ChatBot msg={this.choosenOption}/>)
 					this.display.push(<div style={{marginTop: '7px',display: 'inline-block',marginBottom:'20px',marginLeft:'40px'}}>{this.option}</div>)
 				}
+				else if(opt[0]['message'].split(' ')[0] == '!masukan'){
+					fetch('http://localhost:5000/api/masukan',{
+						method:'GET'
+					})
+
+					setTimeout(
+						  () => {
+						  	this.display.push(<ChatBot msg={'Ketik masukan ataupun kendala anda, kami akan mencatat tanggapan anda sebagai bahan evaluasi kami kedepannya.'}/>)
+						  }, 
+						  500
+						);
+					
+					
+				}
 				else{
 
 					if(opt[0]['message'].split(' ')[0] == '!download'){
@@ -188,114 +202,135 @@
 		appendData(e){
 			e.preventDefault()
 
-			fetch('http://localhost:5000/api',{
-				method:'POST',
-				headers:{
-					'Content-Type': 'application/json',
-	        		'Accept': 'application/json',
-					'Access-Control-Allow-Origin': 'https://botsdm.pusri.co.id',
-					'Access-Control-Allow-Credentials': 'true'
+			var letter_and_spaces = /^[a-zA-Z\s]*$/;
 
-				},
-				body: JSON.stringify({
-					'msg':this.state.value
+			//Validation to the user_name input field
+			if(!letter_and_spaces.test(this.state.value)){
+				this.display.push(<ChatBot msg='Maaf kami hanya menerima pertanyaan berupa teks. Anda dapat masukan pertanyaan atau menekan tombol opsi pertanyaan diatas.'/>)
+				this.setState({
+					showdata:this.display,
+					value:""
+				})	
+			}
+			else if(!this.state.value.replace(/\s/g, '').length){
+				this.display.push(<ChatBot msg='Masukan pertanyaan atau anda dapat menekan tombol opsi pertanyaan diatas'/>)
+				this.setState({
+					showdata:this.display,
+					value:""
+				})	
+			}
+			else{
+				fetch('http://localhost:5000/api',{
+					method:'POST',
+					headers:{
+						'Content-Type': 'application/json',
+		        		'Accept': 'application/json',
+						'Access-Control-Allow-Origin': 'https://botsdm.pusri.co.id',
+						'Access-Control-Allow-Credentials': 'true'
+
+					},
+					body: JSON.stringify({
+						'msg':this.state.value
+					})
 				})
-			})
-			.then(res=> res.json())
-			.then(output => {
-				if(output['message'].indexOf('!menu') !== -1){
-					output['message'] = output['message'].replace('!menu'," ");
-					const newline = output['message'].split('\n').map(str => <p>{str}</p>);
-					this.setState({
-						output:newline
-					})
-					this.display.push(<ChatUser msg={this.state.value} />)
-					this.display.push(<ChatBot msg={this.state.output} />)
+				.then(res=> res.json())
+				.then(output => {
+					if(output['message'].indexOf('!menu') !== -1){
+						output['message'] = output['message'].replace('!menu'," ");
+						const newline = output['message'].split('\n').map(str => <p>{str}</p>);
+						this.setState({
+							output:newline
+						})
+						this.display.push(<ChatUser msg={this.state.value} />)
+						this.display.push(<ChatBot msg={this.state.output} />)
 
-					this.setState({
-						showdata:this.display,
-						value:""
-					})	
+						this.setState({
+							showdata:this.display,
+							value:""
+						})	
 
-					fetch('http://localhost:5000/api/option',{
-						method:'GET'
-					})
-					.then(res => res.json())
-					.then(opt => {
+						fetch('http://localhost:5000/api/option',{
+							method:'GET'
+						})
+						.then(res => res.json())
+						.then(opt => {
 
-						this.display.push(<ChatBot msg="Apakah ada pertanyaan lain ?"/>)
-						if(opt.length > 1){
-							for (var i = 0; i < opt.length; i++) {
-								this.option.push(<ButtonOption parentCallback = {this.handleCallback} kelas={opt[i]['kelas']} level={opt[i]['level']} dari={opt[i]['dari']} label={opt[i]['label']} message={opt[i]['message']}/>)
+							this.display.push(<ChatBot msg="Apakah ada pertanyaan lain ?"/>)
+							if(opt.length > 1){
+								for (var i = 0; i < opt.length; i++) {
+									this.option.push(<ButtonOption parentCallback = {this.handleCallback} kelas={opt[i]['kelas']} level={opt[i]['level']} dari={opt[i]['dari']} label={opt[i]['label']} message={opt[i]['message']}/>)
+								}
 							}
-						}
-						this.display.push(<div style={{marginTop: '7px',display: 'inline-block',marginBottom:'20px',marginLeft:'40px'}}>{this.option}</div>)
+							this.display.push(<div style={{marginTop: '7px',display: 'inline-block',marginBottom:'20px',marginLeft:'40px'}}>{this.option}</div>)
 
-						setTimeout(
-						  () => {
-						  	this.setState({
-								showdata:this.display
-							})
-							this.option = []
-						  }, 
-						  2500
-						);
-					})
-				}
-				else if(output['message'].indexOf('!download') !== -1){
-					output['message'] = output['message'].replace('!download',"");
-					output['message'] = output['message'].replace(' ',"");
+							setTimeout(
+							  () => {
+							  	this.setState({
+									showdata:this.display
+								})
+								this.option = []
+							  }, 
+							  2500
+							);
+						})
+					}
+					else if(output['message'].indexOf('!download') !== -1){
+						output['message'] = output['message'].replace('!download',"");
+						output['message'] = output['message'].replace(' ',"");
 
-					this.display.push(<ChatUser msg={this.state.value} />)
-					this.display.push(<DownloadBot msg={output['message']}/>)
-					
-					this.setState({
-						showdata:this.display,
-						value:""
-					})	
+						this.display.push(<ChatUser msg={this.state.value} />)
+						this.display.push(<DownloadBot msg={output['message']}/>)
+						
+						this.setState({
+							showdata:this.display,
+							value:""
+						})	
 
-					fetch('http://localhost:5000/api/option',{
-						method:'GET'
-					})
-					.then(res => res.json())
-					.then(opt => {
+						fetch('http://localhost:5000/api/option',{
+							method:'GET'
+						})
+						.then(res => res.json())
+						.then(opt => {
 
-						this.display.push(<ChatBot msg="Apakah ada pertanyaan lain ?"/>)
-						if(opt.length > 1){
-							for (var i = 0; i < opt.length; i++) {
-								this.option.push(<ButtonOption parentCallback = {this.handleCallback} kelas={opt[i]['kelas']} level={opt[i]['level']} dari={opt[i]['dari']} label={opt[i]['label']} message={opt[i]['message']}/>)
+							this.display.push(<ChatBot msg="Apakah ada pertanyaan lain ?"/>)
+							if(opt.length > 1){
+								for (var i = 0; i < opt.length; i++) {
+									this.option.push(<ButtonOption parentCallback = {this.handleCallback} kelas={opt[i]['kelas']} level={opt[i]['level']} dari={opt[i]['dari']} label={opt[i]['label']} message={opt[i]['message']}/>)
+								}
 							}
-						}
-						this.display.push(<div style={{marginTop: '7px',display: 'inline-block',marginBottom:'20px',marginLeft:'40px'}}>{this.option}</div>)
+							this.display.push(<div style={{marginTop: '7px',display: 'inline-block',marginBottom:'20px',marginLeft:'40px'}}>{this.option}</div>)
 
-						setTimeout(
-						  () => {
-						  	this.setState({
-								showdata:this.display
-							})
-							this.option = []
-						  }, 
-						  2500
-						);
-					})
+							setTimeout(
+							  () => {
+							  	this.setState({
+									showdata:this.display
+								})
+								this.option = []
+							  }, 
+							  2500
+							);
+						})
 
-				}
-				else{
-					const newline = output['message'].split('\n').map(str => <p>{str}</p>);
-					this.setState({
-						output:newline
-					})
-					this.display.push(<ChatUser msg={this.state.value} />)
-					this.display.push(<ChatBot msg={this.state.output} />)
-					
-					this.setState({
-						showdata:this.display,
-						value:""
-					})	
-				}
-			})
+					}
+					else{
+						const newline = output['message'].split('\n').map(str => <p>{str}</p>);
+						this.setState({
+							output:newline
+						})
+						this.display.push(<ChatUser msg={this.state.value} />)
+						this.display.push(<ChatBot msg={this.state.output} />)
+						
+						this.setState({
+							showdata:this.display,
+							value:""
+						})	
+					}
+				})
+				
+				console.log('submit')
+			}
+
 			
-			console.log('submit')
 		}
 
 		handleChange(e){
@@ -319,8 +354,22 @@
 
 				$('#inputbox').focus()
 			}
+			function closed(){
+				var menu = $('.menu-bot')
+				menu.css('display','none')
+				var tl = new TimelineMax()
+				tl.to(menu,0.5,{opacity:0})
+				tl.to(menu,1,{y:1000,ease: Power2.easeOut},0)
+
+				var layout = $('.box-layout')
+				tl.to(layout,0.2,{opacity:1},0)
+
+			}
 			$('.box-layout').click(function(){
 				invoke()
+			})
+			$('#close-bot').click(function(){
+				closed()
 			})
 			this.scrollToBottom();
 		}
@@ -334,13 +383,17 @@
 				<div>
 					<div class="menu-bot">
 						<div class="header-menu">
-							<div style={{margin:'13px 20px'}}>
+							<div style={{backgroundColor: "transparent", padding:'13px 20px'}}>
 								<img id="image-big" src="/static/bot.png"/>
 								<div id="font-big">
 									Lastri SDM
 									<span id="online">
 										Online
 									</span>
+								</div>
+								
+								<div class='close-box'>
+									<div id='close-bot'><i class="las la-times"></i></div>									
 								</div>
 							</div>
 						</div>
@@ -355,7 +408,7 @@
 						<div class="footer-menu">
 							<form id="input-form" onSubmit={this.appendData}>				
 								<div class="input-box">
-									<input type="text" value={this.state.value} onChange={this.handleChange} name="" placeholder="Ketik pertanyaan anda disini" style={{border: 'none',width: '100%'}} id="inputbox"/>
+									<input autocomplete="off" type="text" value={this.state.value} onChange={this.handleChange} name="" placeholder="Ketik pertanyaan anda disini" style={{border: 'none',width: '100%',backgroundColor: "transparent"}} id="inputbox"/>
 								</div>
 								<div class="button-box">
 									<button id='buttonz'>
@@ -380,4 +433,4 @@
 		}
 	}
 
-	ReactDOM.render(<Bot/> , document.getElementById('app'));
+	ReactDOM.render(<Bot/> , document.getElementById('app'));	

@@ -13,7 +13,6 @@ stories:
   - action: utter_greeting
   - intent: tidak
   - action: utter_terima_kasih
-  - action: action_back_menu
 
 
 - story: hotel path 1

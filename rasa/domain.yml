@@ -38,14 +38,20 @@ intents:
   - dinas_sppd
   - hotel_dinas
   - layanan_kesehatan
+  - masukan_kendala
 
 forms:
   form_badge:
     badge:
       - type: from_text
+  form_masukan:
+    masukan:
+      - type: from_text
 
 slots:
   badge:
+    type: text
+  masukan:
     type: text
 
 responses:
@@ -66,6 +72,9 @@ responses:
   
   utter_ask_badge:
   - text: "Berapa nomor badge anda ?"
+
+  utter_ask_masukan:
+  - text: "Ketik masukan dan kendala yang ingin anda sampaikan"
   
   utter_ask_alasan_pembatalan:
   - text: "Pembatalan pemesanan hanya didasarkan atas alasan berikut ini: \n-Kegiatan dinas batal \n-Kegiatan dinas selesai lebih cepat \n-Kegiatan dinas diperpanjang \n\n Apakah alasan pembatalan anda ?"
@@ -172,8 +181,12 @@ responses:
   utter_menu_dinas:
   - text: "Pertanyaan terkait Dinas / SPPD : \n1. Pengajuan Dinas \n2. Transportasi Dinas \n3. Laporan Dinas \n4. Hotel Dinas"
 
+  utter_masukan_kendala:
+  - text: "Masukan anda telah kami simpan, Terima kasih.  "
+
 actions:
 - action_back_menu
+- action_reset
 
 session_config:
   session_expiration_time: 60

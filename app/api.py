@@ -70,7 +70,21 @@ def option_handler():
 
 	return jsonify(data)
 
+@api.route('masukan',methods =['GET','POST'])
+def masukan_handler():
+	output = {
+		'message':rasa_handler('beri masukan dan kendala')
+	}
+	return jsonify(output)
 
 @api.route('prototype',methods=['get'])
 def admin_handler():
 	return render_template('prototype.html')
+
+@api.route('iam',methods=['get'])
+def iam_handler():
+	return render_template('iam.html')
+
+@api.route('mobile',methods=['get'])
+def mobile_handler():
+	return render_template('mobile.html')

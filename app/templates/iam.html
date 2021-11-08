@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<meta name="description" content="Smarthr - Bootstrap Admin Template">
+	<meta name="csrf-token" content="ehkUcKyxW2qW79RiDwnXw7zdXhZsMrrUkuEwbOPX">
+	<meta name="keywords"
+		content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+	<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+	<meta name="robots" content="noindex, nofollow">
+	<title>IAM PT. PUPUK SRIWIDJAJA</title>
+
+
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="https://iam.pusri.co.id/img/psp.ico">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/bootstrap.css">
+
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/select2.min.css">
+
+	
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/toastr.min.css">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/bootstrap-datetimepicker.min.css">
+
+	<!-- Calendar CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/fullcalendar.min.css">
+
+	<!-- Tagsinput CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+
+	<!-- Datatable CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/dataTables.bootstrap4.min.css">
+
+	<!-- Chart CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/plugins/morris/morris.css">
+
+	<!-- Summernote CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/plugins/summernote/dist/summernote-bs4.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="https://iam.pusri.co.id/css/style.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+
+	<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+	
+	
+</head> 
+
+  <body>
+
+ <style>
+  .sidebar-menu a {
+    font-size: 13px !important;
+    font-weight: 300 !important;
+    text-decoration: none !important;
+    
+  }
+
+  .sidebar-menu .submenu {
+    margin: 7px 0 !important;
+    padding: 2px 0 !important;
+
+  }
+
+  .sidebar-menu .la {
+    font-size: 22px !important;
+  }
+</style>
+<div id="app"></div>
+<div class="main-wrapper">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+      <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+              <li>
+                <a class="active" href="https://iam.pusri.co.id/home"><i class="la la-home"></i><span> Home </span></a></li>
+          <li class="submenu NH0004NH" style="display:none;">
+          
+            <a href="#"><i class="la la-user"></i> <span> Survey </span> <span class="menu-arrow"></span></a>
+            <ul style="display: none;">
+                <li>
+                    <a class="" href="https://iam.pusri.co.id/surveykaryawan"> Karyawan </a></li>
+                    <a class="" href="https://iam.pusri.co.id/surveyakhlak"> Culture Pulse Check </a></li>
+            </ul>
+        </li>
+        
+        <li class="submenu">
+            <a href="#"><i class="la la-calculator"></i> <span> Pascakerja </span> <span class="menu-arrow"></span></a>
+            <ul style="display: none;">
+                <li>
+                    <a class="" href="https://iam.pusri.co.id/kalkulator"> Kalkulator Pesangon </a></li>
+            </ul>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="la la-medkit"></i> <span> Kesehatan </span> <span class="menu-arrow"></span></a>
+          <ul style="display: none;">
+              <li>
+                  <a class="" href="https://iam.pusri.co.id/datakesehatan"> Data Kesehatan </a></li>
+            </ul>
+        </li>
+          <li class="submenu NH0003NH" style="display:none;">
+            <a href="#"><i class="la la-pencil"></i> <span> Surat Pengajuan Lembur </span> <span
+                class="menu-arrow"></span></a>
+            <ul style="display: none;">
+              <li>
+                <a class="" href="https://iam.pusri.co.id/pengajuanspl"> Pengajuan
+                </a></li>
+              <a class="" href="https://iam.pusri.co.id/statuspengajuan"> Status
+                Pengajuan </a>
+                <a class="" href="https://iam.pusri.co.id/datapembayaran"> Data Pembayaran </a>
+                <a class=" approval" href="https://iam.pusri.co.id/splapproval" style="display:none;"> Approval </a></li>
+                <a class=" approval" href="https://iam.pusri.co.id/splreport" style="display:none;"> Report Pengajuan </a></li>
+          </li>
+        </ul>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="la la-angellist"></i> <span> Vaksin </span> <span class="menu-arrow"></span></a>
+          <ul style="display: none;">
+            <li>
+              <a class="" href="https://iam.pusri.co.id/jadwalvaksin"> Tambah Jadwal
+                Vaksin</a></li>
+            <a class="" href="https://iam.pusri.co.id/sudahvaksin"> Upload Data
+              Vaksin</a>
+        </li>
+        <a class="" href="https://iam.pusri.co.id/manualbook"> Manual Book</a></li>
+        
+        </ul>
+        </li>
+        <li class="submenu approval" style="display:none;">
+          <a href="#"><i class="la la-arrow-circle-o-right"></i> <span> Delegasi </span> <span
+              class="menu-arrow"></span></a>
+          <ul style="display: none;">
+            <li>
+              <a class=" approval" href="https://iam.pusri.co.id/pjs" style="display:none;">
+                Setting Delegasi </a></li>
+            <a class=" approval" href="https://iam.pusri.co.id/approvalpjs"
+              style="display:none;"> Approval Delegasi</a>
+        </li>
+        </ul>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="la la-plus"></i> <span> FAQ </span> <span class="menu-arrow"></span></a>
+          <ul style="display: none;">
+              <li>
+                  <a class="" href="https://iam.pusri.co.id/FAQ_kesehatan"> Kesehatan </a></li>
+          </ul>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="la la-cog"></i> <span> Setting </span> <span class="menu-arrow"></span></a>
+          <ul style="display: none;">
+            <li>
+              <a class="" href="https://iam.pusri.co.id/settingpassword"> Setting
+                Password </a></li>
+          </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <div class="header">
+
+            <!-- Logo -->
+            <div class="header-left">
+                <a href="#" class="logo">
+                    <img src="img/logo_txt.png" width="151" height="36" alt="">
+                </a>
+            </div>
+            <!-- /Logo -->
+
+            <a id="toggle_btn" href="javascript:void(0);">
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+
+            <!-- Header Title -->
+            <div class="page-title-box">
+                <h3>PORTAL IAM - <span class="nama_karyawan">KARYAWAN</span></h3>
+            </div>
+            <!-- /Header Title -->
+
+            <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars" style="color: white"></i></a>
+
+            <!-- Header Menu -->
+            <ul class="nav user-menu">
+
+                <li class="nav-item dropdown">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <i class="fa fa-bell-o"></i>
+                  </a>
+                  <div class="dropdown-menu notifications">
+                    <div class="topnav-dropdown-header">
+                      <span class="notification-title">Notifications</span>
+                      <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                    </div>
+                    <div class="noti-content">
+                      <ul class="notification-list">
+
+
+                      </ul>
+                    </div>
+                    <div class="topnav-dropdown-footer">
+                      <a href="https://iam.pusri.co.id/notifikasi">View all Notifications</a>
+                    </div>
+                  </div>
+                </li>
+                <!-- /Notifications -->
+
+                <li class="nav-item dropdown has-arrow main-drop">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <span class="user-img"><img src="img/profiles/avatar-21.jpg" alt="">
+                        <span class="status online"></span></span>
+                        <span class="id_karyawan">Karyawan</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:;" onclick="logout()" role="button">Logout</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- /Header Menu -->
+
+            <!-- Mobile Menu -->
+            <div class="dropdown mobile-user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" style="color: white"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="javascript:;" onclick="logout()" role="button">Logout</a>
+                </div>
+            </div>
+            <!-- /Mobile Menu -->
+
+        </div>
+
+ <!-- Page Wrapper -->
+<style>
+	body {
+		
+	}
+
+	.dash-card-content p {
+		font-size: 16px;
+
+	}
+
+	.dash-card-icon i {
+		font-size: 16px !important;
+	}
+
+	.dash-card-icon {
+		font-size: 16px !important;
+
+		padding-right: 5px !important;
+	}
+
+	.dash-card {
+		padding: 15px !important;
+	}
+
+	.chartdiv {
+		width: 100%;
+		height: 331px;
+	}
+
+	.staff-grid-row .profile-widget:hover {
+		-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+		/* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+		-moz-box-shadow: 3px 3px 5px 6px #ccc;
+		/* Firefox 3.5 - 3.6 */
+		box-shadow: 3px 3px 5px 6px #ccc;
+		/* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+	}
+
+	.data {
+		padding-left: 16%;
+		padding-top: 53%;
+		position: absolute;
+		color: white;
+		font-weight: 500;
+		font-style: normal;
+		font-size: 12px;
+		word-wrap: break-word;
+		width: 60%;
+		text-align: left !important;
+		line-height: 15px !important;
+
+	}
+
+
+	@media  only screen and (max-width: 675px) {
+		.badge-preview img {
+			border-radius: 0px !important;
+			width: 100% !important;
+
+		}
+
+		.sch .card .card-body {
+			padding: 0px !important;
+		}
+
+		.sch .welcome {
+			padding: 20px !important;
+		}
+
+		#staffoto {
+			padding: 0 15px !important;
+			margin-top: 10px !important;
+
+		}
+
+		#staffoto img {
+			width: 50%;
+		}
+
+		.data {
+			padding-left: 5.3%;
+			padding-top: 70%;
+			position: absolute;
+			color: white;
+			font-weight: 500;
+			font-style: normal;
+			font-size: 12px;
+			word-wrap: break-word;
+			width: 60%;
+			text-align: left !important;
+			line-height: 15px !important;
+
+		}
+
+		.member-detail {
+			padding: 15px !important;
+		}
+	}
+
+	.setuju:hover {
+		color: #5dce64;
+		cursor: pointer;
+	}
+</style>
+<div class="page-wrapper">
+
+	<!-- Page Content -->
+	<div class="content container-fluid">
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-12">
+				</div>
+			</div>
+		</div>
+
+		
+
+		<div class="card mb-0 sch">
+			<div class="card-body">
+				<div class="d-none" role="alert" id="alert">
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="profile-view">
+							<div class="profile-basic welcome" style="padding: 20px 20px 0px 20px; margin: 0px">
+								<div class="row justify-content-lg-between justify-content-sm-start">
+									<div class="col-12 col-sm-7">
+										<h3 class="mb-4 pt-4 text-center">Your Team</h3>
+										<div class="row mt-5 justify-content-center staff-group">
+											
+										</div>
+										<div class="row d-none">
+											<div class="col-12">
+												<label for="">Member</label>
+												<div class="card overflow-auto border-0 shadow-none" style="height: 311px;">
+													<ul class="list-group list-group-flush" id="justlistname">
+
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-5 text-right order-lg-last order-first mt-0 mt-lg-5 ">
+										<div class="row">
+											<div class="col-12">
+												<div class="badge-preview  text-center ">
+													<div class="data">
+														<span style="font: 12px">Jabatan: Sebuah Jabatan</span>
+													</div>
+													<img src="" alt="" class="img img-fluid" id="imgbadge" style="width: 75% ;">
+												</div>
+											</div>
+
+											<div class="col-12 text-center mt-4">
+												<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+													<div class="carousel-inner" id="quote">
+
+													</div>
+													<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+														data-slide="prev">
+														<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+														<span class="sr-only">Previous</span>
+													</a>
+													<a class="carousel-control-next" href="#carouselExampleControls" role="button"
+														data-slide="next">
+														<span class="carousel-control-next-icon" aria-hidden="true"></span>
+														<span class="sr-only">Next</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- /Page Content -->
+
+</div>
+
+
+
+
+<!-- /Page Wrapper -->
+<script>
+	var APP_URL = "http://localhost";
+	
+</script>
+ <!-- jQuery -->
+<script>
+	var APP_URL = ""
+	var API_URL = ""
+</script>
+
+<script src="/static/main.js">
+</script>
+
+<script src="https://iam.pusri.co.id/js/jquery-3.2.1.min.js"></script>
+
+		<!-- Bootstrap Core JS -->
+        <script src="https://iam.pusri.co.id/js/popper.min.js"></script>
+        <script src="https://iam.pusri.co.id/js/bootstrap.min.js"></script>
+
+		<!-- Slimscroll JS -->
+		<script src="https://iam.pusri.co.id/js/jquery.slimscroll.min.js"></script>
+		<!-- Select2 JS -->
+		<script src="https://iam.pusri.co.id/js/select2.min.js"></script>
+
+		<script src="https://iam.pusri.co.id/js/jquery.blockUI.js" type="text/javascript"></script>
+		<script src="https://iam.pusri.co.id/js/toastr.min.js" type="text/javascript"></script>
+
+		<script src="https://iam.pusri.co.id/js/jquery-ui.min.js"></script>
+		<script src="https://iam.pusri.co.id/js/jquery.ui.touch-punch.min.js"></script>
+
+		<!-- Datetimepicker JS -->
+		<script src="https://iam.pusri.co.id/js/moment.min.js"></script>
+		<script src="https://iam.pusri.co.id/js/bootstrap-datetimepicker.min.js"></script>
+
+		<script src="https://iam.pusri.co.id/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Calendar JS -->
+		<script src="https://iam.pusri.co.id/js/jquery-ui.min.js"></script>
+        <script src="https://iam.pusri.co.id/js/fullcalendar.min.js"></script>
+        <script src="https://iam.pusri.co.id/js/jquery.fullcalendar.js"></script>
+
+		<!-- Multiselect JS -->
+		<script src="https://iam.pusri.co.id/js/multiselect.min.js"></script>
+
+		<!-- Datatable JS -->
+		<script src="https://iam.pusri.co.id/js/jquery.dataTables.min.js"></script>
+		<script src="https://iam.pusri.co.id/js/dataTables.checkboxes.min.js"></script>
+		<script src="https://iam.pusri.co.id/js/dataTables.bootstrap4.min.js"></script>
+
+		
+		<script src="https://iam.pusri.co.id/js/bootbox.min.js"></script>
+
+		<!-- Summernote JS -->
+		<script src="https://iam.pusri.co.id/plugins/summernote/dist/summernote-bs4.min.js"></script>
+
+
+		<script src="https://iam.pusri.co.id/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+		<!-- Task JS -->
+		<script src="https://iam.pusri.co.id/js/task.js"></script>
+
+		<!-- Dropfiles JS
+		<script src="https://iam.pusri.co.id/js/dropfiles.js"></script> -->
+
+		<script>
+		 $(document).ready(function(){
+
+
+
+
+
+        // Read value on page load
+        $("#result b").html($("#customRange").val());
+
+        // Read value on change
+        $("#customRange").change(function(){
+            $("#result b").html($(this).val());
+        });
+    });
+		$(".header").stick_in_parent({
+
+		});
+		// This is for the sticky sidebar
+		$(".stickyside").stick_in_parent({
+			offset_top: 60
+		});
+		$('.stickyside a').click(function() {
+			$('html, body').animate({
+				scrollTop: $($(this).attr('href')).offset().top - 60
+			}, 500);
+			return false;
+		});
+		// This is auto select left sidebar
+		// Cache selectors
+		// Cache selectors
+		var lastId,
+			topMenu = $(".stickyside"),
+			topMenuHeight = topMenu.outerHeight(),
+			// All list items
+			menuItems = topMenu.find("a"),
+			// Anchors corresponding to menu items
+			scrollItems = menuItems.map(function() {
+				var item = $($(this).attr("href"));
+				if (item.length) {
+					return item;
+				}
+			});
+
+		// Bind click handler to menu items
+
+
+		// Bind to scroll
+		$(window).scroll(function() {
+			// Get container scroll position
+			var fromTop = $(this).scrollTop() + topMenuHeight - 250;
+
+			// Get id of current scroll item
+			var cur = scrollItems.map(function() {
+				if ($(this).offset().top < fromTop)
+					return this;
+			});
+			// Get the id of the current element
+			cur = cur[cur.length - 1];
+			var id = cur && cur.length ? cur[0].id : "";
+
+			if (lastId !== id) {
+				lastId = id;
+				// Set/remove active class
+				menuItems
+					.removeClass("active")
+					.filter("[href='#" + id + "']").addClass("active");
+			}
+		});
+		$(function () {
+			$(document).on("click", '.btn-add-row', function () {
+				var id = $(this).closest("table.table-review").attr('id');  // Id of particular table
+				console.log(id);
+				var div = $("<tr />");
+				div.html(GetDynamicTextBox(id));
+				$("#"+id+"_tbody").append(div);
+			});
+			$(document).on("click", "#comments_remove", function () {
+				$(this).closest("tr").prev().find('td:last-child').html('<button type="button" class="btn btn-danger" id="comments_remove"><i class="fa fa-trash-o"></i></button>');
+				$(this).closest("tr").remove();
+			});
+			function GetDynamicTextBox(table_id) {
+				$('#comments_remove').remove();
+				var rowsLength = document.getElementById(table_id).getElementsByTagName("tbody")[0].getElementsByTagName("tr").length+1;
+				return '<td>'+rowsLength+'</td>' + '<td><input type="text" name = "DynamicTextBox" class="form-control" value = "" ></td>' + '<td><input type="text" name = "DynamicTextBox" class="form-control" value = "" ></td>' + '<td><input type="text" name = "DynamicTextBox" class="form-control" value = "" ></td>' + '<td><button type="button" class="btn btn-danger" id="comments_remove"><i class="fa fa-trash-o"></i></button></td>'
+			}
+		});
+</script>
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+  </body>
+</html>

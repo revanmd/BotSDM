@@ -62,7 +62,7 @@ class ChatUser extends React.Component {
       /*#__PURE__*/ React.createElement(
         "div",
         {
-          class: "avatar"
+          class: "avatar-bot"
         },
         /*#__PURE__*/ React.createElement("img", {
           src: "/static/bot.png",
@@ -98,7 +98,46 @@ class ChatBot extends React.Component {
         )
       ),
       /*#__PURE__*/ React.createElement("div", {
-        class: "avatar"
+        class: "avatar-bot"
+      })
+    );
+  }
+}
+
+class DownloadBot extends React.Component {
+  render() {
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        class: "bot-chat"
+      },
+      /*#__PURE__*/ React.createElement("img", {
+        src: "/static/bot.png",
+        class: "bot-small"
+      }),
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "chatbox"
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "messagebox"
+          },
+          "Anda dapat mendownload ",
+          /*#__PURE__*/ React.createElement(
+            "a",
+            {
+              href: this.props.msg,
+              download: true
+            },
+            "Berkas"
+          )
+        )
+      ),
+      /*#__PURE__*/ React.createElement("div", {
+        class: "avatar-bot"
       })
     );
   }
@@ -120,7 +159,7 @@ class Bot extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.handleCallback = this.handleCallback.bind(this);
-    fetch("http://10.10.2.66:5000/api/option", {
+    fetch("http://localhost:5000/api/option", {
       method: "GET"
     })
       .then((res) => res.json())
@@ -169,7 +208,7 @@ class Bot extends React.Component {
 
   handleCallback(childData) {
     const url =
-      "http://10.10.2.66:5000/api/option?kelas=" +
+      "http://localhost:5000/api/option?kelas=" +
       childData.kelas +
       "&level=" +
       (childData.level + 1) +
@@ -217,17 +256,35 @@ class Bot extends React.Component {
               this.option
             )
           );
-        } else {
-          console.log(opt);
-          const newline = opt[0]["message"]
-            .split("\n")
-            .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+        } else if (opt[0]["message"].split(" ")[0] == "!masukan") {
+          fetch("http://localhost:5000/api/masukan", {
+            method: "GET"
+          });
           this.display.push(
             /*#__PURE__*/ React.createElement(ChatBot, {
-              msg: newline
+              msg: "Ketik masukan dan pertanyaan anda, kami akan mencatat tanggapan anda sebagai bahan evaluasi kami kedepannya."
             })
           );
-          fetch("http://10.10.2.66:5000/api/option", {
+        } else {
+          if (opt[0]["message"].split(" ")[0] == "!download") {
+            let link = opt[0]["message"].split(" ")[1];
+            this.display.push(
+              /*#__PURE__*/ React.createElement(DownloadBot, {
+                msg: link
+              })
+            );
+          } else {
+            const newline = opt[0]["message"]
+              .split("\n")
+              .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatBot, {
+                msg: newline
+              })
+            );
+          }
+
+          fetch("http://localhost:5000/api/option", {
             method: "GET"
           })
             .then((res) => res.json())
@@ -272,7 +329,7 @@ class Bot extends React.Component {
                   showdata: this.display
                 });
                 this.option = [];
-              }, 1500);
+              }, 2500);
             });
         }
 
@@ -291,42 +348,201 @@ class Bot extends React.Component {
 
   appendData(e) {
     e.preventDefault();
-    fetch("http://10.10.2.66:5000/api", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "http://10.10.2.66:5000",
-        "Access-Control-Allow-Credentials": "true"
-      },
-      body: JSON.stringify({
-        msg: this.state.value
-      })
-    })
-      .then((res) => res.json())
-      .then((output) => {
-        const newline = output["message"]
-          .split("\n")
-          .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
-        this.setState({
-          output: newline
-        });
-        this.display.push(
-          /*#__PURE__*/ React.createElement(ChatUser, {
-            msg: this.state.value
-          })
-        );
-        this.display.push(
-          /*#__PURE__*/ React.createElement(ChatBot, {
-            msg: this.state.output
-          })
-        );
-        this.setState({
-          showdata: this.display,
-          value: ""
-        });
+    var letter_and_spaces = /^[a-zA-Z\s]*$/; //Validation to the user_name input field
+
+    if (!letter_and_spaces.test(this.state.value)) {
+      this.display.push(
+        /*#__PURE__*/ React.createElement(ChatBot, {
+          msg: "Maaf kami hanya menerima pertanyaan berupa teks. Anda dapat masukan pertanyaan atau menekan tombol opsi pertanyaan diatas."
+        })
+      );
+      this.setState({
+        showdata: this.display,
+        value: ""
       });
-    console.log("submit");
+    } else if (!this.state.value.replace(/\s/g, "").length) {
+      this.display.push(
+        /*#__PURE__*/ React.createElement(ChatBot, {
+          msg: "Masukan pertanyaan atau anda dapat menekan tombol opsi pertanyaan diatas"
+        })
+      );
+      this.setState({
+        showdata: this.display,
+        value: ""
+      });
+    } else {
+      fetch("http://localhost:5000/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "https://botsdm.pusri.co.id",
+          "Access-Control-Allow-Credentials": "true"
+        },
+        body: JSON.stringify({
+          msg: this.state.value
+        })
+      })
+        .then((res) => res.json())
+        .then((output) => {
+          if (output["message"].indexOf("!menu") !== -1) {
+            output["message"] = output["message"].replace("!menu", " ");
+            const newline = output["message"]
+              .split("\n")
+              .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+            this.setState({
+              output: newline
+            });
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatUser, {
+                msg: this.state.value
+              })
+            );
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatBot, {
+                msg: this.state.output
+              })
+            );
+            this.setState({
+              showdata: this.display,
+              value: ""
+            });
+            fetch("http://localhost:5000/api/option", {
+              method: "GET"
+            })
+              .then((res) => res.json())
+              .then((opt) => {
+                this.display.push(
+                  /*#__PURE__*/ React.createElement(ChatBot, {
+                    msg: "Apakah ada pertanyaan lain ?"
+                  })
+                );
+
+                if (opt.length > 1) {
+                  for (var i = 0; i < opt.length; i++) {
+                    this.option.push(
+                      /*#__PURE__*/ React.createElement(ButtonOption, {
+                        parentCallback: this.handleCallback,
+                        kelas: opt[i]["kelas"],
+                        level: opt[i]["level"],
+                        dari: opt[i]["dari"],
+                        label: opt[i]["label"],
+                        message: opt[i]["message"]
+                      })
+                    );
+                  }
+                }
+
+                this.display.push(
+                  /*#__PURE__*/ React.createElement(
+                    "div",
+                    {
+                      style: {
+                        marginTop: "7px",
+                        display: "inline-block",
+                        marginBottom: "20px",
+                        marginLeft: "40px"
+                      }
+                    },
+                    this.option
+                  )
+                );
+                setTimeout(() => {
+                  this.setState({
+                    showdata: this.display
+                  });
+                  this.option = [];
+                }, 2500);
+              });
+          } else if (output["message"].indexOf("!download") !== -1) {
+            output["message"] = output["message"].replace("!download", "");
+            output["message"] = output["message"].replace(" ", "");
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatUser, {
+                msg: this.state.value
+              })
+            );
+            this.display.push(
+              /*#__PURE__*/ React.createElement(DownloadBot, {
+                msg: output["message"]
+              })
+            );
+            this.setState({
+              showdata: this.display,
+              value: ""
+            });
+            fetch("http://localhost:5000/api/option", {
+              method: "GET"
+            })
+              .then((res) => res.json())
+              .then((opt) => {
+                this.display.push(
+                  /*#__PURE__*/ React.createElement(ChatBot, {
+                    msg: "Apakah ada pertanyaan lain ?"
+                  })
+                );
+
+                if (opt.length > 1) {
+                  for (var i = 0; i < opt.length; i++) {
+                    this.option.push(
+                      /*#__PURE__*/ React.createElement(ButtonOption, {
+                        parentCallback: this.handleCallback,
+                        kelas: opt[i]["kelas"],
+                        level: opt[i]["level"],
+                        dari: opt[i]["dari"],
+                        label: opt[i]["label"],
+                        message: opt[i]["message"]
+                      })
+                    );
+                  }
+                }
+
+                this.display.push(
+                  /*#__PURE__*/ React.createElement(
+                    "div",
+                    {
+                      style: {
+                        marginTop: "7px",
+                        display: "inline-block",
+                        marginBottom: "20px",
+                        marginLeft: "40px"
+                      }
+                    },
+                    this.option
+                  )
+                );
+                setTimeout(() => {
+                  this.setState({
+                    showdata: this.display
+                  });
+                  this.option = [];
+                }, 2500);
+              });
+          } else {
+            const newline = output["message"]
+              .split("\n")
+              .map((str) => /*#__PURE__*/ React.createElement("p", null, str));
+            this.setState({
+              output: newline
+            });
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatUser, {
+                msg: this.state.value
+              })
+            );
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatBot, {
+                msg: this.state.output
+              })
+            );
+            this.setState({
+              showdata: this.display,
+              value: ""
+            });
+          }
+        });
+      console.log("submit");
+    }
   }
 
   handleChange(e) {
@@ -365,8 +581,38 @@ class Bot extends React.Component {
       $("#inputbox").focus();
     }
 
+    function closed() {
+      var menu = $(".menu-bot");
+      menu.css("display", "none");
+      var tl = new TimelineMax();
+      tl.to(menu, 0.5, {
+        opacity: 0
+      });
+      tl.to(
+        menu,
+        1,
+        {
+          y: 1000,
+          ease: Power2.easeOut
+        },
+        0
+      );
+      var layout = $(".box-layout");
+      tl.to(
+        layout,
+        0.2,
+        {
+          opacity: 1
+        },
+        0
+      );
+    }
+
     $(".box-layout").click(function () {
       invoke();
+    });
+    $("#close-bot").click(function () {
+      closed();
     });
     this.scrollToBottom();
   }
@@ -393,7 +639,8 @@ class Bot extends React.Component {
             "div",
             {
               style: {
-                margin: "13px 20px"
+                backgroundColor: "transparent",
+                padding: "13px 20px"
               }
             },
             /*#__PURE__*/ React.createElement("img", {
@@ -412,6 +659,22 @@ class Bot extends React.Component {
                   id: "online"
                 },
                 "Online"
+              )
+            ),
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                class: "close-box"
+              },
+              /*#__PURE__*/ React.createElement(
+                "a",
+                {
+                  href: "#",
+                  id: "close-bot"
+                },
+                /*#__PURE__*/ React.createElement("i", {
+                  class: "las la-times"
+                })
               )
             )
           )
@@ -449,6 +712,7 @@ class Bot extends React.Component {
                 class: "input-box"
               },
               /*#__PURE__*/ React.createElement("input", {
+                autocomplete: "off",
                 type: "text",
                 value: this.state.value,
                 onChange: this.handleChange,
@@ -456,7 +720,8 @@ class Bot extends React.Component {
                 placeholder: "Ketik pertanyaan anda disini",
                 style: {
                   border: "none",
-                  width: "100%"
+                  width: "100%",
+                  backgroundColor: "transparent"
                 },
                 id: "inputbox"
               })

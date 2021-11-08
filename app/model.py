@@ -47,6 +47,10 @@ class model:
 		self.add_rule(1,1,'',3,"Transportasi Dinas")
 		self.add_rule(1,1,'',4,"Hotel Dinas")
 
+		self.add_rule(1,2,'1',1,"Menu ini masih dalam pengembangan")
+		self.add_rule(1,2,'2',1,"Menu ini masih dalam pengembangan")
+		self.add_rule(1,2,'3',1,"Menu ini masih dalam pengembangan")
+
 		self.add_rule(1,2,'4',1,"Cara Pesan Hotel")
 		self.add_rule(1,2,'4',2,"Cek Budget Hotel")
 		self.add_rule(1,2,'4',3,"Reschedule / Pembatalan Pemesanan")
@@ -98,7 +102,7 @@ class model:
 		self.add_rule(1,4,'4-1-2',1,temp)
 
 		#Badge
-		self.add_rule(1,3,'4-2',1,"Berapa no badge anda ?")
+		self.add_rule(1,3,'4-2',1,"Fitur ini masih dalam pengembangan")
 
 		self.add_rule(1,3,'4-3',1,"Jadwal kegiatan dinas batal")
 		self.add_rule(1,3,'4-3',2,"Kegiatan dinas lebih cepat selesai")
@@ -166,6 +170,10 @@ class model:
 	def seed_2(self):
 		self.add_rule(0,0,'',1,'Dinas / SPPD')
 		self.add_rule(0,0,'',2,'Layanan Kesehatan')
+
+		#tambahan pengembangan masukan dan kendala
+		self.add_rule(0,0,'',3,'Masukan dan Kendala')
+		self.add_rule(0,0,'3',1,'!masukan')
 
 		self.add_rule(2,1,'',1,'Asuransi Kesehatan')
 		self.add_rule(2,1,'',2,'BPJS Kesehatan')
@@ -363,6 +371,8 @@ class model:
 		6. Untuk anak ke 4 dst tetap didaftar ke ESS, tetapi tidak mendapatkan tanggungan kepesertaan di BPJS Kesehatan dan Asuransi Kesehatan.
 		"""
 		self.add_rule(2,3,'6-4',1,temp)
+
+		self.add_rule(3,1,'',1,'!masukan')
 
 
 

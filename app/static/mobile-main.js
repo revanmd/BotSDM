@@ -1,202 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<!--<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">-->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- COPY THIS FOR BOT SDM -->
-	<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<!-- END -->
-
-	<style type="text/css">
-  #app > div > div.menu-bot > div.main-menu > div > div > div.chatbox > div > p{
-    margin:0px !important;
-      margin-bottom:5px !important;
-  }
-  #buttonz{
-    background: url('/static/sendmessage.svg');width: 20px;height: 20px;background-size: 100% 100%;border: none;cursor: pointer;
-  }
-  #image-big{
-    width: 45px; height: 45px;display: inline-block; margin-right: 10px;box-shadow: 0 0 7px 0 rgb(0 0 0 / 15%);padding: 3px; border-radius: 100%;overflow: hidden;
-  }
-  #font-big{
-    display: inline-block; margin-left: 8px;position: absolute;font-size: 19px;font-weight:600; color:white
-  }
-  #online{
-    display: block;font-size: 15px;font-weight: 500;color: rgb(155, 166, 179)
-  }
-  #header-bot{
-    padding: 15px 18px;
-    background-color: white; 
-    display: inline-block;
-    float: left;
-    margin-top: 5px;
-    position: relative;
-    z-index: -1;
-    right: -200px;
-    border-radius: 40px;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 1px 2px rgb(0 0 0 / 23%);
-    font-weight: 400;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  #button-bot{
-    background: url('/static/logobot.png');
-    background-size: 100% 100%;
-    cursor: pointer;
-    height: 58px;
-    width: 58px;
-    float: right;
-    display: inline-block;
-  }
-  .box-layout{
-    position: fixed;
-    display: inline-block;
-    z-index: 99;
-    cursor: pointer;
-    bottom: 20px;
-    right: 20px;
-  }
-  .wrapper{
-    width: 183px;
-    position: relative;
-    z-index: -1;
-    display: inline-block;
-    overflow: hidden;
-    right: -30px;
-  }
-
-  .menu-bot{
-    height: 75vh;
-    background-color: white;
-    width: 370px;
-    position: fixed;
-    right: 30px;
-    bottom: 100px;
-    z-index: 100;
-    border-radius: 20px;
-    top: 100px
-
-  }
-  .header-menu{
-    background-color: #005BA2;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border:1px solid lightgrey;
-  }
-  .main-menu{
-    background-color: rgb(234, 238, 243);
-    height:80%;
-    box-shadow: inset 0 0 23px 0 rgb(0 0 0 / 16%);
-    padding: 10px 20px;
-  }
-  .bot-small{
-    width: 20px;height: 20px;padding: 5px; border-radius: 100%;
-    background-color: white;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 10%);
-  }
-  .bot-chat{
-    display: flex;
-    padding: 5px
-  }
-  .chatbox{
-    margin-left: 10px;
-    line-height: 1.6;
-    font-size: 13px
-  }
-  .messagebox{
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    border-top-left-radius: 0px
-  }
-  .button-option{
-    padding: 7px 14px;
-    border-radius: 16px;
-    border: solid 1px rgb(0, 108, 255);
-    background-color: white;
-    font-size: 11px;
-    font-weight: 600;
-    color: rgb(0, 108, 255);
-    margin: 6px;
-    cursor:pointer;
-  }
-  .footer-menu{
-    background-color: #cacaca57;
-    padding: 12px 20px;
-    order: 2;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-
-  }
-  #input-form{
-    display: flex;
-  }
-  .button-box{
-    margin-left: auto;
-
-  }
-  #inputbox{
-    min-width: 250px
-  }
-  #inputbox:focus{
-    outline: none
-  }
-  #inputbox::placeholder{
-    font-size: 13px;
-    font-weight: 400;
-    color:rgb(155, 166, 179);
-    letter-spacing: 1.2px;
-  }
-  .menu-bot{
-    display: none;
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  .user-chat{
-    display: flex;
-    padding: 5px;
-    margin-top: 8px;
-    margin-left: auto;
-  }
-  .user-chat .avatar-bot{
-    float: right
-  }
-  .user-chat .chatbox .messagebox{
-    float: right;
-    margin-left: auto;
-    height: auto;
-    margin-right: 10px;
-    border-radius:13px;
-    border-top-right-radius: 0px;
-    word-wrap:break-word;
-  }
-  .main-menu{
-    overflow-y: auto;
-  }
-  @media only screen and (max-width: 400px) {
-    .menu-bot{
-      height:90%;
-      width:100%;
-      top:20px;
-      right:0px !important;
-    }
-  }
-  </style>
-
-</head>
-<body>
-	<div id="app"></div>
-</body>
-<script type="text/javascript">
-  class ButtonOption extends React.Component {
+class ButtonOption extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -457,23 +259,14 @@ class Bot extends React.Component {
         } else if (opt[0]["message"].split(" ")[0] == "!masukan") {
           fetch("http://localhost:5000/api/masukan", {
             method: "GET"
-          })
-            .then((res) => res.json())
-            .then((output) => {
-              if (output["message"].length > 0) {
-                this.display.push(
-                  /*#__PURE__*/ React.createElement(ChatBot, {
-                    msg: "Ketik masukan dan pertanyaan anda, kami akan mencatat tanggapan anda sebagai bahan evaluasi kami kedepannya."
-                  })
-                );
-              } else {
-                this.display.push(
-                  /*#__PURE__*/ React.createElement(ChatBot, {
-                    msg: "Maaf fitur ini sedang tidak bisa digunakan"
-                  })
-                );
-              }
-            });
+          });
+          setTimeout(() => {
+            this.display.push(
+              /*#__PURE__*/ React.createElement(ChatBot, {
+                msg: "Ketik masukan ataupun kendala anda, kami akan mencatat tanggapan anda sebagai bahan evaluasi kami kedepannya."
+              })
+            );
+          }, 500);
         } else {
           if (opt[0]["message"].split(" ")[0] == "!download") {
             let link = opt[0]["message"].split(" ")[1];
@@ -790,8 +583,38 @@ class Bot extends React.Component {
       $("#inputbox").focus();
     }
 
+    function closed() {
+      var menu = $(".menu-bot");
+      menu.css("display", "none");
+      var tl = new TimelineMax();
+      tl.to(menu, 0.5, {
+        opacity: 0
+      });
+      tl.to(
+        menu,
+        1,
+        {
+          y: 1000,
+          ease: Power2.easeOut
+        },
+        0
+      );
+      var layout = $(".box-layout");
+      tl.to(
+        layout,
+        0.2,
+        {
+          opacity: 1
+        },
+        0
+      );
+    }
+
     $(".box-layout").click(function () {
       invoke();
+    });
+    $("#close-bot").click(function () {
+      closed();
     });
     this.scrollToBottom();
   }
@@ -838,6 +661,21 @@ class Bot extends React.Component {
                   id: "online"
                 },
                 "Online"
+              )
+            ),
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                class: "close-box"
+              },
+              /*#__PURE__*/ React.createElement(
+                "div",
+                {
+                  id: "close-bot"
+                },
+                /*#__PURE__*/ React.createElement("i", {
+                  class: "las la-times"
+                })
               )
             )
           )
@@ -938,8 +776,3 @@ ReactDOM.render(
   /*#__PURE__*/ React.createElement(Bot, null),
   document.getElementById("app")
 );
-
-</script>
-
-<!--<script src="{{ url_for('static', filename='main.js') }}"></script>-->
-</html>

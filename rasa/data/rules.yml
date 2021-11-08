@@ -15,6 +15,23 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_ans_badge
+  - action: action_reset
+
+- rule: Activate form masukan
+  steps:
+  - intent: masukan_kendala
+  - action: form_masukan
+  - active_loop: form_masukan
+
+- rule : Submit form masukan
+  steps:
+  - action: form_masukan
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_masukan_kendala
+  - action: action_reset
+
 
 - rule: Terima kasih
   steps:

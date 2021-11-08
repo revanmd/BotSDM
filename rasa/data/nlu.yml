@@ -341,3 +341,11 @@ nlu:
     - tata klaim kacamata
     - tata reimburse kacamata
     - tata kacamata
+
+- intent: masukan_kendala
+  examples : |
+    - beri masukan dan kendala
+    - masukan dan kendala
+    - tambahkan masukan 
+    - tambahkan kendala
+
