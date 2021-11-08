@@ -117,14 +117,8 @@ margin: 6px;
 cursor:pointer;
 }
 .footer-menu{
-padding: 12px 20px;
-order: 2;
 border-bottom-left-radius: 20px;
 border-bottom-right-radius: 20px;
-
-}
-#input-form{
-display: flex;
 }
 .button-box{
 margin-left: auto;

@@ -721,7 +721,6 @@ class Bot extends React.Component {
                 placeholder: "Ketik pertanyaan anda disini",
                 style: {
                   border: "none",
-                  width: "100%",
                   backgroundColor: "transparent"
                 },
                 id: "inputbox"
