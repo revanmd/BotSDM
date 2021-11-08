@@ -65,7 +65,7 @@ class ChatUser extends React.Component {
           class: "avatar-bot"
         },
         /*#__PURE__*/ React.createElement("img", {
-          src: "/static/bot.png",
+          src: "https://botsdm.pusri.co.id/static/bot.png",
           class: "bot-small"
         })
       )
@@ -81,7 +81,7 @@ class ChatBot extends React.Component {
         class: "bot-chat"
       },
       /*#__PURE__*/ React.createElement("img", {
-        src: "/static/bot.png",
+        src: "https://botsdm.pusri.co.id/static/bot.png",
         class: "bot-small"
       }),
       /*#__PURE__*/ React.createElement(
@@ -112,7 +112,7 @@ class DownloadBot extends React.Component {
         class: "bot-chat"
       },
       /*#__PURE__*/ React.createElement("img", {
-        src: "/static/bot.png",
+        src: "https://botsdm.pusri.co.id/static/bot.png",
         class: "bot-small"
       }),
       /*#__PURE__*/ React.createElement(
@@ -645,7 +645,7 @@ class Bot extends React.Component {
             },
             /*#__PURE__*/ React.createElement("img", {
               id: "image-big",
-              src: "/static/bot.png"
+              src: "https://botsdm.pusri.co.id/static/bot.png"
             }),
             /*#__PURE__*/ React.createElement(
               "div",
