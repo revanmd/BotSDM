@@ -41,16 +41,11 @@ intents:
   - masukan_kendala
 
 forms:
-  form_badge:
-    badge:
-      - type: from_text
   form_masukan:
     masukan:
       - type: from_text
 
 slots:
-  badge:
-    type: text
   masukan:
     type: text
 
@@ -95,7 +90,7 @@ responses:
   - text: "1. Silahkan melakukan pemesanan lanjutan sesuai dengan hari perpanjangannya \n2. Misal kegiatan dari tgl 1 Januari s.d 05 Januari 2021, lalu diperpanjang sampai tanggal 07 Januari 2021 \n3. Maka hotel dapat dipesan dari tanggal 05 - 07 Januari 2021 \n4. Pada laporan dinas harus melampirkan surat keterangan perpanjangan dinas ke Dep. Keternagakerjaan"
 
   utter_ans_badge:
-  - text: "Badge anda adalah {badge}"
+  - text: "Fitur ini masih dalam pengembangan"
 
   utter_terima_kasih:
   - text: "Terima kasih kembali, semoga membantu."

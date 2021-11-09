@@ -11,7 +11,7 @@ model = model()
 history = history()
 
 def rasa_handler(message):
-	res = requests.post(rasa_endpoint,json={'message':stopwords_removal(message)})
+	res = requests.post(rasa_endpoint,json={'message':stopwords_removal(message.lower())})
 	out = ""
 	if res.status_code == 200:
 		for item in res.json():

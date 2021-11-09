@@ -31,31 +31,28 @@ nlu:
 
 - intent: cara_pesan_hotel
   examples: |
-    - pesan hotel
-    - reservasi hotel
-    - booking hotel
-    - pemesanan hotel
     - pesan hotel dinas
+    - pesen hotel dinas
+    - mesen hotel
+    - nak mesen hotel dinas
+    - reservasi hotel
+    - cak mano caro mesen hotel dinas
 
 - intent: melalui_sendiri
   examples: |
     - pesan hotel sendiri
-    - pemesanan hotel sendiri
-    - booking hotel sendiri
-    - pesan mandiri
-    - booking mandiri
-    - pesan sendiri
-    - reservasi sendiri
+    - pesen sendiri
+    - sendiri
+    - mesen hotel sendiri
+    - mesen sendiri
 
 - intent: melalui_perusahaan
   examples: |
     - pesan hotel perusahaan
-    - pemesahanan hotel perusahaan
-    - booking hotel perusahaan
-    - pesan hotel kantor
-    - booking hotel kantor
-    - pesan hotel pusri
-    - booking hotel pusri
+    - mesen hotel perusahaan
+    - pesan lewat perusahaan
+    - pesen lewat perusahaan
+    - perusahaan
 
 - intent: cek_hotel_kerjasama
   examples: |
@@ -65,11 +62,12 @@ nlu:
 
 - intent: cek_budget_hotel
   examples: |
-    - cek budget dinas menggunakan hotel
-    - cek budget pemakaian hotel dinas
-    - cek budget dinas hotel
-    - cek budget hotel dinas
-    - cek budget hotel
+    - cek anggaran hotel
+    - cek anggaran pemesanan dinas
+    - cek anggaran dinas
+    - cek anggaran hotel dinas
+    - cek budget 
+    - budget hotel dinas
 
 - intent: ya
   examples: |
@@ -310,11 +308,16 @@ nlu:
 
 - intent: hotel_dinas
   examples : |
-    - hotel
-    - hoteel
-    - hotel
     - hotel dinas
-    - hoteel dinas_sppd
+    - hotel
+    - hotel dinass
+    - hotel dinas
+    - menu hotel dinas
+    - hoteel dinas
+    - menu hotel
+    - hotel
+    - hotell
+    - hotel
 
 - intent: layanan_kesehatan
   examples : |
@@ -322,6 +325,9 @@ nlu:
     - layanann kesehatan
     - layanan kesehatann
     - layanan ksehatann
+    - layanan kesehatan
+    - layanan kesehatan
+
 
 - intent: klaim_kacamata
   examples : |

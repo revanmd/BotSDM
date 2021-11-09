@@ -375,7 +375,6 @@ class model:
 		self.add_rule(3,1,'',1,'!masukan')
 
 
-
 	def get_item(self,kelas,level,dari):
 		data = self.db.find({'kelas':kelas,'level':level,'dari':dari},{'_id':0})
 		out = []
@@ -388,3 +387,4 @@ if __name__ == '__main__':
 	model.clear_rule()
 	model.seed_rule_hotel()	
 	model.seed_2()
+	

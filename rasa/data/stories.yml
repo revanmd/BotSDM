@@ -49,6 +49,11 @@ stories:
   - intent: cek_hotel_kerjasama
   - action: utter_cek_hotel_perusahaan
 
+- story: cek budget hotel
+  steps:
+  - intent: cek_budget_hotel
+  - action: utter_ans_badge
+
 - story: rincian benefit
   steps:
   - intent: rincian_benefit_ramayana
