@@ -189,7 +189,7 @@
     }
   }
   
-    @media only screen and (max-width: 400px){
+    @media only screen and (max-width: 700px){
       .menu-bot{
         height:100% !important;
         top:0px;

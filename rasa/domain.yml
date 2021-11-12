@@ -156,7 +156,7 @@ responses:
   - text: "1. Aktivasi kepesertaan istri/suami/anak di Asuransi adalah 1 hari kerja sejak data di ESS di-approve oleh SDM. Download atau refresh aplikasi askes Ramayana untuk memastikan bahwa istri/suami sudah terdaftar di Ramayana. \n2. Setelah diaktivasi,walaupun belum mendapat kartu asuransi, istri/suami/anak sudah dapat mengakses benefit asuransi kesehatan dengan terlebih dahulu menghubungi PIC Ramayana (PIC Ramayana: 081290373429) jika ingin berobat. \n3. Secara paralel, mohon untuk mengurus penambahan data di Kartu Keluarga (KK) dan mengumpulkan copy KK ke Bag. PRK &Pasca Kerja atau dapat dikirim ke email sekdepnaker@pusri.co.id untuk didaftarkan ke BPJS Kesehatan. Beri keterangan data badge, nama karyawan, alamat email dan nomor handphone karyawan saat mengumpulkan KK. \n4. Pastikan KK sudah online di Dukcapil. Apabila belum online, maka anak tidak bias didaftarkan ke BPJS Kesehatan. \n5. Apabila dalam 3 bulan peserta belum mengumpulkan KK, SDM berhak untuk menonaktifkan kepesertaan anak di Asuransi Kesehatan. \n6. Untuk anak ke 4 dst tetap didaftar ke ESS, tetapi tidak mendapatkan tanggungan kepesertaan di BPJS Kesehatan dan Asuransi Kesehatan."
   
   utter_res_tidak_mengerti:
-  - text: "Maaf kami tidak mengerti apa maksud anda."
+  - text: "Mohon maaf, lastri belum bisa jawab."
 
   utter_greeting:
   - text: "Hai, apakah ada yang bisa saya bantu ? \n \nKami bisa menjawab pertanyaan mengenai : \n1. Pemesanan hotel dinas \n2. Asuransi ramayana \n3. Ketentuan Telemedicine \n4. Pendaftaran askes anggota keluarga \n5. Kartu BPJS Hilang"

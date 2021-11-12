@@ -1,14 +1,20 @@
 from flask import Blueprint,request, jsonify, make_response, render_template, session
 from flask import current_app as app
 from flask_cors import cross_origin
+
+# Import Model Here
 from .model import model
 from .history_model import history
+from .dashboard_model import dashboard
+# End Import Model
+
 import requests
 
 api = Blueprint('api',__name__)
 rasa_endpoint = "http://localhost:5005/webhooks/rest/webhook"
 model = model()
 history = history()
+dashboard = dashboard()
 
 def rasa_handler(message):
 	res = requests.post(rasa_endpoint,json={'message':stopwords_removal(message.lower())})
@@ -88,3 +94,30 @@ def iam_handler():
 @api.route('mobile',methods=['get'])
 def mobile_handler():
 	return render_template('mobile.html')
+
+@api.route('treeview',methods=['get'])
+def treeview_handler():
+	parent = model.get_item(1,1,'')
+	tempo = []
+	for item in parent:
+		data = {
+			'text':item['message'],
+			'nodes':[]
+		}
+		tempo.append(data)
+		model.recursive(item,2,tempo,data['nodes'])
+
+	return render_template('bstreeview.html',rule= tempo)
+
+
+@api.route('dashboard',methods=['get'])
+def dashboard_handler():
+	data = dashboard.data_dashboard()
+	pesan = dashboard.latest_message(10)
+	feedback = dashboard.latest_feedback(5)
+
+	return jsonify({
+		'data':data,
+		'pesan':pesan,
+		'feedback':feedback
+	})

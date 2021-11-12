@@ -42,9 +42,9 @@ class model:
 		return self.db.delete_many({})
 
 	def seed_rule_hotel(self):
-		self.add_rule(1,1,'',1,"Pengajuan Dinas")
-		self.add_rule(1,1,'',2,"Laporan Dinas")
-		self.add_rule(1,1,'',3,"Transportasi Dinas")
+		self.add_rule(1,1,'',1,"Pengajuan Dinas (maintenance)")
+		self.add_rule(1,1,'',2,"Laporan Dinas (maintenance)")
+		self.add_rule(1,1,'',3,"Transportasi Dinas (maintenance)")
 		self.add_rule(1,1,'',4,"Hotel Dinas")
 
 		self.add_rule(1,2,'1',1,"Menu ini masih dalam pengembangan")
@@ -52,7 +52,7 @@ class model:
 		self.add_rule(1,2,'3',1,"Menu ini masih dalam pengembangan")
 
 		self.add_rule(1,2,'4',1,"Cara Pesan Hotel")
-		self.add_rule(1,2,'4',2,"Cek Budget Hotel")
+		self.add_rule(1,2,'4',2,"Cek Budget Hotel (maintenance)")
 		self.add_rule(1,2,'4',3,"Reschedule / Pembatalan Pemesanan")
 		self.add_rule(1,2,'4',4,"Pertanyaan Lain")
 
@@ -367,7 +367,7 @@ class model:
 		2. Setelah diaktivasi,walaupun belum mendapat kartu asuransi, istri/suami/anak sudah dapat mengakses benefit asuransi kesehatan dengan terlebih dahulu menghubungi PIC Ramayana (PIC Ramayana: 081290373429) jika ingin berobat.
 		3. Secara paralel, mohon untuk mengurus penambahan data di Kartu Keluarga (KK) dan mengumpulkan copy KK ke Bag. PRK &Pasca Kerja atau dapat dikirim ke email sekdepnaker@pusri.co.id untuk didaftarkan ke BPJS Kesehatan. Beri keterangan data badge, nama karyawan, alamat email dan nomor handphone karyawan saat mengumpulkan KK. 
 		4. Pastikan KK sudah online di Dukcapil. Apabila belum online, maka anak tidak bias didaftarkan ke BPJS Kesehatan. 
-		5. Apabila dalam 3 bulan peserta belum mengumpulkan KK, SDM berhak untuk menonaktifkan kepesertaan anak di Asuransi Kesehatan.  
+		5. Apabila dalam 3 bulan peserta belum mempulkan KK, SDM berhak untuk menonaktifkan kepesertaan anak di Asuransi Kesehatan.  
 		6. Untuk anak ke 4 dst tetap didaftar ke ESS, tetapi tidak mendapatkan tanggungan kepesertaan di BPJS Kesehatan dan Asuransi Kesehatan.
 		"""
 		self.add_rule(2,3,'6-4',1,temp)
@@ -382,9 +382,47 @@ class model:
 			out.append(item)
 		return out
 
+	def get_item_by_kelas(self,kelas):
+		data = self.db.find({'kelas':kelas},{'_id':0})
+		out = []
+		for item in data:
+			out.append(item)
+		return out
+
+	def recursive(self,parent,level,tempo,json_parent):
+		dari = None
+		if parent['dari'] == "":
+			dari = str(parent['label'])
+		else:
+			dari = parent['dari'] + str('-') + str(parent['label'])
+
+		child = self.get_item(1,level,dari)
+		if child != []:
+			for item in child:
+				data = {
+					'text':item['message'],
+					'nodes':[]
+				}
+				json_parent.append(data)
+				self.recursive(item,level+1,tempo,data['nodes'])
+	
 if __name__ == '__main__':
 	model = model()
+	"""
 	model.clear_rule()
 	model.seed_rule_hotel()	
 	model.seed_2()
-	
+	"""
+
+	parent = model.get_item(1,1,'')
+	tempo = []
+	for item in parent:
+		data = {
+			'text':item['message'],
+			'nodes':[]
+		}
+		tempo.append(data)
+		model.recursive(item,2,tempo,data['nodes'])
+
+	pprint.pprint(tempo)
+	pprint.pprint(len(model.get_item_by_kelas(1)))

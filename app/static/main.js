@@ -152,7 +152,7 @@ class Bot extends React.Component {
     this.state = {
       showdata: this.display,
       value: "",
-      output: "Maaf kami tidak mengenali apa yang anda maksud",
+      output: "Mohon maaf, lastri belum bisa jawab",
       option: []
     };
     this.appendData = this.appendData.bind(this);
@@ -166,7 +166,7 @@ class Bot extends React.Component {
       .then((opt) => {
         this.display.push(
           /*#__PURE__*/ React.createElement(ChatBot, {
-            msg: "Apakah ada yang bisa saya bantu ?"
+            msg: "Apa yang bisa lastri bantu?"
           })
         );
 

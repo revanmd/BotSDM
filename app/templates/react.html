@@ -92,7 +92,7 @@
 			this.state = {
 				showdata: this.display,
 				value: "",
-				output: "Maaf kami tidak mengenali apa yang anda maksud",
+				output: "Mohon maaf, lastri belum bisa jawab",
 				option:[]
 			}
 
@@ -107,7 +107,7 @@
 			})
 			.then(res => res.json())
 			.then(opt => {
-				this.display.push(<ChatBot msg="Apakah ada yang bisa saya bantu ?"/>)
+				this.display.push(<ChatBot msg="Apa yang bisa lastri bantu?"/>)
 				if(opt.length > 1){
 					for (var i = 0; i < opt.length; i++) {
 						this.option.push(<ButtonOption parentCallback = {this.handleCallback} kelas={opt[i]['kelas']} level={opt[i]['level']} dari={opt[i]['dari']} label={opt[i]['label']} message={opt[i]['message']}/>)
