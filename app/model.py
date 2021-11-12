@@ -408,21 +408,6 @@ class model:
 	
 if __name__ == '__main__':
 	model = model()
-	"""
 	model.clear_rule()
 	model.seed_rule_hotel()	
 	model.seed_2()
-	"""
-
-	parent = model.get_item(1,1,'')
-	tempo = []
-	for item in parent:
-		data = {
-			'text':item['message'],
-			'nodes':[]
-		}
-		tempo.append(data)
-		model.recursive(item,2,tempo,data['nodes'])
-
-	pprint.pprint(tempo)
-	pprint.pprint(len(model.get_item_by_kelas(1)))
