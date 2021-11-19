@@ -1,5 +1,7 @@
 import pymongo
 import pprint
+import html
+import re
 from pymongo import MongoClient
 
 class model:
@@ -30,7 +32,6 @@ class model:
 		if data == None:
 			data = self.rule_template(kelas,level,dari,label,message)
 			oid = self.db.insert_one(data).inserted_id
-
 			if oid != None:
 				return True
 			else:
@@ -396,16 +397,168 @@ class model:
 		else:
 			dari = parent['dari'] + str('-') + str(parent['label'])
 
-		child = self.get_item(1,level,dari)
+		child = self.get_item(parent['kelas'],level,dari)
 		if child != []:
 			for item in child:
+				item['message'] = html.escape(item['message'])
+				func_editmenu = "editSubMenu({},{},'{}',{},'{}')".format(item['kelas'],item['level'],item['dari'],item['label'],item['message'])
+				func_deletemenu = "deleteSubMenu({},{},'{}',{},'{}')".format(item['kelas'],item['level'],item['dari'],item['label'],item['message'])
+				func_addmenu = "addSubMenu({},{},'{}',{},'{}')".format(item['kelas'],item['level'],item['dari'],item['label'],item['message'])
+				
+				html_data = item['message']+"<button class='button-tree-edit' onclick='"+html.escape(func_editmenu)+"'> <i class='fa fa-pencil' aria-hidden='true'></i></button> <button class='button-tree-delete' onclick='"+html.escape(func_deletemenu)+"'> <i class='fa fa-trash-o' aria-hidden='true'></i></button><button class='button-tree-add' onclick='"+html.escape(func_addmenu)+"'> <i class='fa fa-plus' aria-hidden='true'></i></button>"
+
 				data = {
-					'text':item['message'],
+					'text':html_data,
 					'nodes':[]
 				}
 				json_parent.append(data)
-				self.recursive(item,level+1,tempo,data['nodes'])
-	
+				self.recursive(item,level+1,tempo,data['nodes'])	
+
+
+	def delete_sub_rule(self,kelas,level,dari,label):
+		item = {
+			'kelas':kelas,
+			'level':level,
+			'dari':dari,
+			'label':label,
+		}
+
+		regex = ""
+		if level == 0 and dari == "":
+			regex = ""
+		elif level == 1 and dari == "":
+			regex = '^'+str(item['label'])
+		else:
+			temp = item['dari']+'-'+str(item['label'])
+			regex = '^'+temp
+
+		doc_1 = self.db.delete_one(item)
+		count = doc_1.deleted_count
+		doc_2 = None
+
+		if count > 0:	
+			if dari == '' and kelas == 0:
+				doc_2 = self.db.delete_many({'kelas':item['label']})
+			elif level >= 1:
+				doc_2 = self.db.delete_many({'dari':{'$regex':regex},'kelas':item['kelas']})
+
+		if count > 0 or doc_2 != None:
+			return True
+		else:
+			return False
+
+	def get_label_open(self,kelas_parent,level_parent,dari_parent,label_parent):
+		kelas_child = None
+		level_child = None
+		dari_child = None
+
+		# kalau dia main menu, kelas = 0, level = 0 maka untuk child : kelas = label, level +=1, dari = ''
+		if kelas_parent == 0 and level_parent == 0 and dari_parent == '':
+			kelas_child = label_parent
+			level_child = level_parent + 1
+			dari_child = dari_parent
+		# kalau dia sub menu awal, kelas != 0, level = 1, dari = '' maka untuk child: kelas = kelas, level +=1 , dari =str(label)
+		elif kelas_parent != 0 and level_parent == 1 and dari_parent == '':
+			kelas_child = kelas_parent
+			level_child = level_parent + 1
+			dari_child = str(label_parent)
+		# kalau dia sub menu berikutnya, kelas != 0, level > 1, dari != '', maka untuk child: kelas = kelas, level +=1, dari = dari + '-' + str(label)
+		elif kelas_parent != 0 and level_parent > 1 and dari_parent != '':
+			kelas_child = kelas_parent
+			level_child = level_parent + 1
+			dari_child = dari_parent + '-' + str(label_parent)
+
+		doc = []
+		labels = []
+		if None not in [kelas_child, level_child, dari_child]:
+			doc = self.get_item(kelas_child, level_child, dari_child)
+
+			for item in doc:
+				labels.append(item['label'])
+
+			labels.sort()
+			label_open = 0
+			not_included = True
+			while not_included and label_open < 50:
+				label_open +=1
+				if label_open not in labels:
+					not_included = False
+				
+
+			if not_included == False:
+				return label_open
+			else:
+				return -1
+
+		else:
+			return -1
+
+	def append_main_rule(self,message):
+		kelas_child = 0
+		level_child = 0
+		dari_child = ""
+		label_child = self.db.find({'kelas':kelas_child,'level':level_child,'dari':dari_child})
+
+		labels = []
+		for item in label_child:
+			labels.append(item['label'])
+
+		labels.sort()
+		label_open = 0
+		not_included = True
+
+		while not_included and label_open < 50:
+			label_open +=1
+			if label_open not in labels:
+				not_included = False
+
+		if not_included == False:
+			return self.add_rule(kelas_child,level_child,dari_child,label_open,message)
+		else:
+			return False
+
+	def append_new_rule(self,kelas_parent,level_parent,dari_parent,label_parent,new_item):
+		kelas_child = None
+		level_child = None
+		dari_child = None
+
+		# kalau dia main menu, kelas = 0, level = 0 maka untuk child : kelas = label, level +=1, dari = ''
+		if kelas_parent == 0 and level_parent == 0 and dari_parent == '':
+			kelas_child = label_parent
+			level_child = level_parent + 1
+			dari_child = dari_parent
+		# kalau dia sub menu awal, kelas != 0, level = 1, dari = '' maka untuk child: kelas = kelas, level +=1 , dari =str(label)
+		elif kelas_parent != 0 and level_parent == 1 and dari_parent == '':
+			kelas_child = kelas_parent
+			level_child = level_parent + 1
+			dari_child = str(label_parent)
+		# kalau dia sub menu berikutnya, kelas != 0, level > 1, dari != '', maka untuk child: kelas = kelas, level +=1, dari = dari + '-' + str(label)
+		elif kelas_parent != 0 and level_parent > 1 and dari_parent != '':
+			kelas_child = kelas_parent
+			level_child = level_parent + 1
+			dari_child = dari_parent + '-' + str(label_parent)
+
+		if None not in [kelas_parent,level_parent,dari_parent,label_parent]:
+			label_child = self.get_label_open(kelas_parent,level_parent,dari_parent,label_parent)
+			cek = self.add_rule(kelas_child,level_child,dari_child,label_child,new_item)
+			return cek
+		else:
+			return False
+
+	def edit_rule(self,kelas_parent,level_parent,dari_parent,label_parent,new_message):
+		query = {
+			'kelas':int(kelas_parent),
+			'level':int(level_parent),
+			'dari':str(dari_parent),
+			'label':int(label_parent)
+		}
+		status = self.db.update_one(query, {"$set":{'message':new_message}})
+		if status != None:
+			return True
+		else:
+			return False
+
+
 if __name__ == '__main__':
 	model = model()
 	model.clear_rule()

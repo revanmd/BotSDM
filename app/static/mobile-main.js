@@ -673,9 +673,7 @@ class Bot extends React.Component {
                 {
                   id: "close-bot"
                 },
-                /*#__PURE__*/ React.createElement("i", {
-                  class: "las la-times"
-                })
+                "×"
               )
             )
           )

@@ -12,6 +12,7 @@ class dashboard:
 		self.db_history_option = client['sdm_rule_bot']['history_option']
 		self.db_history_question = client['sdm_rule_bot']['history_question']
 		self.db_feedback_form = client['sdm_rule_bot']['feedback_form']
+		self.db_label_feedback = client['sdm_rule_bot']['label_feedback']
 
 	def current_month_timestamp(self):
 		s = datetime.date.today().replace(day=1)
@@ -50,7 +51,7 @@ class dashboard:
 		elif flag == 'prev':
 			current_month = self.current_month_timestamp()
 			prev_month = self.prev_month_timestamp()
-			ct = self.db_history_option.count_documents({'timestamp':{'$gt':current_month,'$lt':prev_month}})
+			ct = self.db_history_option.count_documents({'timestamp':{'$gt':prev_month,'$lt':current_month}})
 		return ct
 
 	def total_faq_by_year(self,flag='current'):
@@ -62,7 +63,7 @@ class dashboard:
 		elif flag == 'prev':
 			current_month = self.current_year_timestamp()
 			prev_month = self.prev_year_timestamp()
-			ct = self.db_history_option.count_documents({'timestamp':{'$gt':current_month,'$lt':prev_month}})
+			ct = self.db_history_option.count_documents({'timestamp':{'$gt':prev_month,'$lt':current_month}})
 		return ct
 
 	def total_rasa_by_month(self,flag='current'):
@@ -74,7 +75,7 @@ class dashboard:
 		elif flag == 'prev':
 			current_month = self.current_month_timestamp()
 			prev_month = self.prev_month_timestamp()
-			ct = self.db_history_question.count_documents({'timestamp':{'$gt':current_month,'$lt':prev_month}})
+			ct = self.db_history_question.count_documents({'timestamp':{'$gt':prev_month,'$lt':current_month}})
 		return ct
 
 	def total_rasa_by_year(self, flag='current'):
@@ -86,7 +87,7 @@ class dashboard:
 		elif flag == 'prev':
 			current_month = self.current_year_timestamp()
 			prev_month = self.prev_year_timestamp()
-			ct = self.db_history_question.count_documents({'timestamp':{'$gt':current_month,'$lt':prev_month}})
+			ct = self.db_history_question.count_documents({'timestamp':{'$gt':prev_month,'$lt':current_month}})
 		return ct
 
 	def percent_faq(self):
@@ -128,9 +129,13 @@ class dashboard:
 		elif flag == 'prev':
 			current_year = self.current_year_timestamp()
 			prev_year = self.prev_year_timestamp()
-			faq = self.db_history_option.count_documents({'timestamp':{'$gt':current_year,'$lt':prev_year}})
-			rasa = self.db_history_question.count_documents({'timestamp':{'$gt':current_year,'$lt':prev_year}})
+			faq = self.db_history_option.count_documents({'timestamp':{'$gt':prev_year,'$lt':current_year}})
+			rasa = self.db_history_question.count_documents({'timestamp':{'$gt':prev_year,'$lt':current_year}})
 			return rasa + faq
+
+	def total_rasa(self):
+		total = self.db_history_question.count_documents({})
+		return total
 
 	def total_dikenali(self):
 		dikenali = self.db_history_question.count_documents({'label':'berhasil'})
@@ -140,20 +145,62 @@ class dashboard:
 		gagal = self.db_history_question.count_documents({'label':'gagal'})
 		return gagal
 
+	def total_masukan(self):
+		total = self.db_feedback_form.count_documents({})
+		return total
+
+	def total_masukan_by_month(self,flag='current'):
+		total = 0
+		current_month = self.current_month_timestamp()
+		prev_month = self.prev_month_timestamp()
+		if flag == 'current':
+			total = self.db_feedback_form.count_documents({'timestamp':{'$gt':current_month}})
+		elif flag == 'prev':
+			total = self.db_feedback_form.count_documents({'timestamp':{'$gt':prev_month,'$lt':current_month}})
+		return total
+
+	def total_masukan_by_year(self,flag='current'):
+		total = 0
+		current_year = self.current_year_timestamp()
+		prev_year = self.prev_year_timestamp()
+		if flag == 'current':
+			total = self.db_feedback_form.count_documents({'timestamp':{'$gt':current_year}})
+		elif flag == 'prev':
+			total = self.db_feedback_form.count_documents({'timestamp':{'$gt':prev_year,'$lt':current_year}})
+		return total
+
+
 	def latest_message(self,limit):
-		document = self.db_history_question.find({},{'_id': False}).sort([('timestamp', 1)]).limit(limit) 
+		document = self.db_history_question.find({'target':{'$exists':False}}).sort([('timestamp', 1)]).limit(limit) 
 		result = []
 		for item in document:
+			item['_id']= str(item['_id'])
 			item['timestamp'] = datetime.datetime.fromtimestamp(item['timestamp'])
 			result.append(item)
 		return result
 
 	def latest_feedback(self,limit):
-		document = self.db_feedback_form.find({},{'_id': False}).sort([('timestamp', 1)]).limit(limit) 
+		document = self.db_feedback_form.find({'target':{'$exists':False}}).sort([('timestamp', 1)]).limit(limit) 
 		result = []
 		for item in document:
+			item['_id']= str(item['_id'])
 			item['timestamp'] = datetime.datetime.fromtimestamp(item['timestamp'])
 			result.append(item)
+		return result
+
+	def chart_feedback(self):
+		label = []
+		for item in self.db_label_feedback.find({}):
+			label.append(item['label'])
+
+		result = []
+		for item in label:
+			count = self.db_feedback_form.count_documents({'target':item})
+			temp = {
+				'label':item,
+				'count':count
+			}
+			result.append(temp)
 		return result
 
 	def data_dashboard(self):
@@ -170,13 +217,9 @@ class dashboard:
 			'total_dikenali':self.total_dikenali(),
 			'total_gagal':self.total_gagal_dikenali()
 		}
-
-
-
-
+		
 if __name__ == '__main__':
 	mod = dashboard()
-
 	pprint.pprint(mod.latest_message(5))
 
 	"""

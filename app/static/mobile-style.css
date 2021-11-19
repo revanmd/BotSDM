@@ -1,6 +1,6 @@
 
-#app > div > div.menu-bot > div.header-menu > div > div.close-box > div > i{
-font-size:24px;
+#app > div > div.menu-bot > div.header-menu > div > div.close-box{
+font-size:36px;
 color:white;
 cursor:pointer
 }
@@ -76,8 +76,6 @@ top: 100px
 }
 .header-menu{
 background-color: #005BA2;
-border-top-right-radius: 10px;
-border-top-left-radius: 10px;
 }
 .main-menu{
 background-color: rgb(234, 238, 243);
@@ -167,7 +165,7 @@ overflow-y: auto;
   display: inline;
   position: absolute;
   right: 30px;
-  top:20px
+  top:10px
 }
 @media only screen and (max-width: 400px) {
 .header-menu{
@@ -187,6 +185,6 @@ overflow-y: auto;
     margin-right:auto;
     width:300px;
     text-align:center;
-    margin-top:80%;
+    margin-top:45vh;
     font-weight:200
   }

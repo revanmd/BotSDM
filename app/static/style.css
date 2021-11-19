@@ -1,13 +1,15 @@
-
-#app > div > div.menu-bot > div.header-menu > div > div.close-box > div > i{
-    font-size:24px;
-    color:white;
-    cursor:pointer
-  }
-  #app > div > div.menu-bot > div.main-menu > div > div > div.chatbox > div > p{
-    margin:0px !important;
-      margin-bottom:5px !important;
-  }
+#close-bot{
+  color:white !important;
+}
+#app > div > div.menu-bot > div.header-menu > div > div.close-box{
+font-size:36px;
+color:white;
+cursor:pointer
+}
+#app > div > div.menu-bot > div.main-menu > div > div > div.chatbox > div > p{
+margin:0px !important;
+  margin-bottom:5px !important;
+}
   #buttonz{
     background: url('/static/sendmessage.svg');width: 20px;height: 20px;background-size: 100% 100%;border: none;cursor: pointer;
   }
@@ -173,7 +175,7 @@
       display: inline;
       position: absolute;
       right: 30px;
-      top:20px
+      top:10px
   }
   @media only screen and (max-width: 400px) {
     .header-menu{
